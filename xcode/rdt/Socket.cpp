@@ -3,7 +3,7 @@
 //  rdt
 //
 //  Created by Chris Orcutt on 11/12/15.
-//  Copyright © 2015 orcudy. All rights reserved.
+//  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
 #include "Socket.hpp"
@@ -31,9 +31,6 @@ Socket::Socket(string ip, int port, TransportLayer type){
   bind();
   
   freeaddrinfo(res);
-}
-
-Socket::Socket(){
 }
 
 void Socket::getAddressInfo(){
