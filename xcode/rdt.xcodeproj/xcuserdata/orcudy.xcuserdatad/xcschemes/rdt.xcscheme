@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E8E5C481BF5692B002ED274"
-               BuildableName = "reliable-data-protocol"
-               BlueprintName = "reliable-data-protocol"
-               ReferencedContainer = "container:reliable-data-protocol.xcodeproj">
+               BlueprintIdentifier = "2E6CD9501BF5913F008F8C46"
+               BuildableName = "rdt"
+               BlueprintName = "rdt"
+               ReferencedContainer = "container:rdt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2E8E5C481BF5692B002ED274"
-            BuildableName = "reliable-data-protocol"
-            BlueprintName = "reliable-data-protocol"
-            ReferencedContainer = "container:reliable-data-protocol.xcodeproj">
+            BlueprintIdentifier = "2E6CD9501BF5913F008F8C46"
+            BuildableName = "rdt"
+            BlueprintName = "rdt"
+            ReferencedContainer = "container:rdt.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2E8E5C481BF5692B002ED274"
-            BuildableName = "reliable-data-protocol"
-            BlueprintName = "reliable-data-protocol"
-            ReferencedContainer = "container:reliable-data-protocol.xcodeproj">
+            BlueprintIdentifier = "2E6CD9501BF5913F008F8C46"
+            BuildableName = "rdt"
+            BlueprintName = "rdt"
+            ReferencedContainer = "container:rdt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2E8E5C481BF5692B002ED274"
-            BuildableName = "reliable-data-protocol"
-            BlueprintName = "reliable-data-protocol"
-            ReferencedContainer = "container:reliable-data-protocol.xcodeproj">
+            BlueprintIdentifier = "2E6CD9501BF5913F008F8C46"
+            BuildableName = "rdt"
+            BlueprintName = "rdt"
+            ReferencedContainer = "container:rdt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
