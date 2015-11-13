@@ -3,7 +3,7 @@
 //  rdt
 //
 //  Created by Chris Orcutt on 11/12/15.
-//  Copyright © 2015 orcudy. All rights reserved.
+//  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
 #ifndef COSocket
@@ -34,7 +34,7 @@ class Socket {
 public:
   //constructor
   Socket(std::string ip, int port, TransportLayer type);
-  Socket();
+  Socket(){};
   
   //members
   int port;

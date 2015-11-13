@@ -3,12 +3,12 @@
 //  rdt
 //
 //  Created by Chris Orcutt on 11/12/15.
-//  Copyright © 2015 orcudy. All rights reserved.
+//  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
 #include <string>
 
-#include "UDPServer.hpp"
+#include "UDPCommunicator.hpp"
 #include <sys/socket.h>
 #include <iostream>
 
@@ -16,15 +16,15 @@
 #define recieve_buffer_size 1000
 using namespace std;
 
-UDPServer::UDPServer(string ip, int port){
+UDPCommunicator::UDPCommunicator(string ip, int port){
   this->socket = Socket(ip, port, UDP);
 }
 
-int  UDPServer::send(string message){
+int  UDPCommunicator::send(string message){
   return 1;
 }
 
-string UDPServer::receive(){
+string UDPCommunicator::receive(){
   struct sockaddr client_addr;
   socklen_t client_addr_len;
 

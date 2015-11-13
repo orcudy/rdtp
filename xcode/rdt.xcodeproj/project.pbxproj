@@ -11,7 +11,7 @@
 		2EA7BDD11BF594440093DD14 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDD01BF594440093DD14 /* main.cpp */; };
 		2EA7BDEA1BF59FEA0093DD14 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */; };
 		2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */; };
-		2EA7BDF01BF5AEC80093DD14 /* UDPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDEE1BF5AEC80093DD14 /* UDPServer.cpp */; };
+		2EA7BDF01BF5AEC80093DD14 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDEE1BF5AEC80093DD14 /* UDPCommunicator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,15 +29,15 @@
 /* Begin PBXFileReference section */
 		2E6CD9511BF5913F008F8C46 /* rdt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rdt; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6CD95B1BF5917E008F8C46 /* Header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Header.cpp; sourceTree = "<group>"; };
-		2E6CD95E1BF5917E008F8C46 /* Server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Server.hpp; sourceTree = "<group>"; };
+		2E6CD95E1BF5917E008F8C46 /* Communicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Communicator.hpp; sourceTree = "<group>"; };
 		2E6CD9601BF5917E008F8C46 /* Header.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Header.hpp; sourceTree = "<group>"; };
 		2EA7BDD01BF594440093DD14 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		2EA7BDE91BF59FEA0093DD14 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
 		2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
 		2EA7BDEC1BF5A3EA0093DD14 /* Error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Error.hpp; sourceTree = "<group>"; };
-		2EA7BDEE1BF5AEC80093DD14 /* UDPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UDPServer.cpp; sourceTree = "<group>"; };
-		2EA7BDEF1BF5AEC80093DD14 /* UDPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UDPServer.hpp; sourceTree = "<group>"; };
+		2EA7BDEE1BF5AEC80093DD14 /* UDPCommunicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UDPCommunicator.cpp; sourceTree = "<group>"; };
+		2EA7BDEF1BF5AEC80093DD14 /* UDPCommunicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UDPCommunicator.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +74,9 @@
 				2E6CD95B1BF5917E008F8C46 /* Header.cpp */,
 				2EA7BDE91BF59FEA0093DD14 /* Socket.hpp */,
 				2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */,
-				2EA7BDEF1BF5AEC80093DD14 /* UDPServer.hpp */,
-				2EA7BDEE1BF5AEC80093DD14 /* UDPServer.cpp */,
-				2E6CD95E1BF5917E008F8C46 /* Server.hpp */,
+				2E6CD95E1BF5917E008F8C46 /* Communicator.hpp */,
+				2EA7BDEF1BF5AEC80093DD14 /* UDPCommunicator.hpp */,
+				2EA7BDEE1BF5AEC80093DD14 /* UDPCommunicator.cpp */,
 				2EA7BDD01BF594440093DD14 /* main.cpp */,
 				2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */,
 				2EA7BDEC1BF5A3EA0093DD14 /* Error.hpp */,
@@ -111,7 +111,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = orcudy;
+				ORGANIZATIONNAME = "Chris Orcutt";
 				TargetAttributes = {
 					2E6CD9501BF5913F008F8C46 = {
 						CreatedOnToolsVersion = 7.1;
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */,
-				2EA7BDF01BF5AEC80093DD14 /* UDPServer.cpp in Sources */,
+				2EA7BDF01BF5AEC80093DD14 /* UDPCommunicator.cpp in Sources */,
 				2E6CD9611BF5917E008F8C46 /* Header.cpp in Sources */,
 				2EA7BDD11BF594440093DD14 /* main.cpp in Sources */,
 				2EA7BDEA1BF59FEA0093DD14 /* Socket.cpp in Sources */,
