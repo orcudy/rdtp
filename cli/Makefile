@@ -1,7 +1,7 @@
 CC=g++ 
 CFLAGS=-Wall -Werror
 LDFLAGS=
-SRC=Header.cpp Socket.cpp UDPServer.cpp Error.cpp  main.cpp
+SRC=Header.cpp Socket.cpp TCPCommunicator.cpp Error.cpp  main.cpp
 OBJ=$(SRC:.cpp=.o)
 EXE=rtcserver
 
