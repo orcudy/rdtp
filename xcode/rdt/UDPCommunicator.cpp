@@ -10,8 +10,7 @@
 
 #include "UDPCommunicator.hpp"
 #include <sys/socket.h>
-#include <iostream>
-
+#include <iostream>
 
 #define recieve_buffer_size 1000
 using namespace std;
