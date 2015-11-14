@@ -10,5 +10,15 @@
 #define FileSplitter_hpp
 
 #include <stdio.h>
+#include <string>
+
+class FileSplitter {
+  std::string filename;
+  int chunkSize;
+  
+public:
+  FileSplitter(std::string filename);
+  char ** split();
+};
 
 #endif /* FileSplitter_hpp */
