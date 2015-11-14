@@ -25,6 +25,11 @@ class Header {
   
   //constructor
   Header();
+  char * generateMessage();
+  
+//  int sendSyn(int seq, std::string filename);
+//  int sendSynack(int seq, int ack, int dataLength);
+  
   
 };
 
