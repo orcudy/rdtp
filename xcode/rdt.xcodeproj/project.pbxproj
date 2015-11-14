@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E6CD9611BF5917E008F8C46 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E6CD95B1BF5917E008F8C46 /* Header.cpp */; };
 		2E6E45E91BF696DD0023838A /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E6E45E71BF696DD0023838A /* TCPCommunicator.cpp */; };
+		2EA5F51C1BF7DBC700F47095 /* RDTProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F51A1BF7DBC700F47095 /* RDTProtocol.cpp */; };
+		2EA5F51F1BF7DBD500F47095 /* GBNProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F51D1BF7DBD500F47095 /* GBNProtocol.cpp */; };
+		2EA5F5221BF7DCA800F47095 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5201BF7DCA800F47095 /* FileSplitter.cpp */; };
 		2EA7BDD11BF594440093DD14 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDD01BF594440093DD14 /* main.cpp */; };
 		2EA7BDEA1BF59FEA0093DD14 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */; };
 		2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */; };
@@ -34,6 +37,12 @@
 		2E6CD9601BF5917E008F8C46 /* Header.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Header.hpp; sourceTree = "<group>"; };
 		2E6E45E71BF696DD0023838A /* TCPCommunicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPCommunicator.cpp; sourceTree = "<group>"; };
 		2E6E45E81BF696DD0023838A /* TCPCommunicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPCommunicator.hpp; sourceTree = "<group>"; };
+		2EA5F51A1BF7DBC700F47095 /* RDTProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RDTProtocol.cpp; sourceTree = "<group>"; };
+		2EA5F51B1BF7DBC700F47095 /* RDTProtocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RDTProtocol.hpp; sourceTree = "<group>"; };
+		2EA5F51D1BF7DBD500F47095 /* GBNProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBNProtocol.cpp; sourceTree = "<group>"; };
+		2EA5F51E1BF7DBD500F47095 /* GBNProtocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GBNProtocol.hpp; sourceTree = "<group>"; };
+		2EA5F5201BF7DCA800F47095 /* FileSplitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileSplitter.cpp; sourceTree = "<group>"; };
+		2EA5F5211BF7DCA800F47095 /* FileSplitter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileSplitter.hpp; sourceTree = "<group>"; };
 		2EA7BDD01BF594440093DD14 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		2EA7BDE91BF59FEA0093DD14 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
@@ -80,6 +89,12 @@
 				2E6CD95E1BF5917E008F8C46 /* Communicator.hpp */,
 				2EA7BDEF1BF5AEC80093DD14 /* UDPCommunicator.hpp */,
 				2EA7BDEE1BF5AEC80093DD14 /* UDPCommunicator.cpp */,
+				2EA5F51A1BF7DBC700F47095 /* RDTProtocol.cpp */,
+				2EA5F51B1BF7DBC700F47095 /* RDTProtocol.hpp */,
+				2EA5F51D1BF7DBD500F47095 /* GBNProtocol.cpp */,
+				2EA5F51E1BF7DBD500F47095 /* GBNProtocol.hpp */,
+				2EA5F5201BF7DCA800F47095 /* FileSplitter.cpp */,
+				2EA5F5211BF7DCA800F47095 /* FileSplitter.hpp */,
 				2EA7BDD01BF594440093DD14 /* main.cpp */,
 				2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */,
 				2EA7BDEC1BF5A3EA0093DD14 /* Error.hpp */,
@@ -154,6 +169,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */,
+				2EA5F5221BF7DCA800F47095 /* FileSplitter.cpp in Sources */,
+				2EA5F51F1BF7DBD500F47095 /* GBNProtocol.cpp in Sources */,
+				2EA5F51C1BF7DBC700F47095 /* RDTProtocol.cpp in Sources */,
 				2EA7BDF01BF5AEC80093DD14 /* UDPCommunicator.cpp in Sources */,
 				2E6E45E91BF696DD0023838A /* TCPCommunicator.cpp in Sources */,
 				2E6CD9611BF5917E008F8C46 /* Header.cpp in Sources */,

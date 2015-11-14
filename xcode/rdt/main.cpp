@@ -13,7 +13,10 @@
 
 int main(int argc, const char ** argv){
 
+  Socket socket = Socket("127.0.0.1", 4500, UDP);
+  
   TCPCommunicator server = TCPCommunicator("127.0.0.1", 4500);
+  
   server.startListening();
   
   return 0;
