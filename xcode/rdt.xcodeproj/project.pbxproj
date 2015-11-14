@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E6CD9611BF5917E008F8C46 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E6CD95B1BF5917E008F8C46 /* Header.cpp */; };
+		2E6E45E91BF696DD0023838A /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E6E45E71BF696DD0023838A /* TCPCommunicator.cpp */; };
 		2EA7BDD11BF594440093DD14 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDD01BF594440093DD14 /* main.cpp */; };
 		2EA7BDEA1BF59FEA0093DD14 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */; };
 		2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */; };
@@ -31,6 +32,8 @@
 		2E6CD95B1BF5917E008F8C46 /* Header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Header.cpp; sourceTree = "<group>"; };
 		2E6CD95E1BF5917E008F8C46 /* Communicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Communicator.hpp; sourceTree = "<group>"; };
 		2E6CD9601BF5917E008F8C46 /* Header.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Header.hpp; sourceTree = "<group>"; };
+		2E6E45E71BF696DD0023838A /* TCPCommunicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPCommunicator.cpp; sourceTree = "<group>"; };
+		2E6E45E81BF696DD0023838A /* TCPCommunicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPCommunicator.hpp; sourceTree = "<group>"; };
 		2EA7BDD01BF594440093DD14 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2EA7BDE81BF59FEA0093DD14 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		2EA7BDE91BF59FEA0093DD14 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
@@ -80,8 +83,18 @@
 				2EA7BDD01BF594440093DD14 /* main.cpp */,
 				2EA7BDEB1BF5A3EA0093DD14 /* Error.cpp */,
 				2EA7BDEC1BF5A3EA0093DD14 /* Error.hpp */,
+				2E6E45EA1BF6AB960023838A /* TCP */,
 			);
 			path = rdt;
+			sourceTree = "<group>";
+		};
+		2E6E45EA1BF6AB960023838A /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				2E6E45E71BF696DD0023838A /* TCPCommunicator.cpp */,
+				2E6E45E81BF696DD0023838A /* TCPCommunicator.hpp */,
+			);
+			name = TCP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +155,7 @@
 			files = (
 				2EA7BDED1BF5A3EA0093DD14 /* Error.cpp in Sources */,
 				2EA7BDF01BF5AEC80093DD14 /* UDPCommunicator.cpp in Sources */,
+				2E6E45E91BF696DD0023838A /* TCPCommunicator.cpp in Sources */,
 				2E6CD9611BF5917E008F8C46 /* Header.cpp in Sources */,
 				2EA7BDD11BF594440093DD14 /* main.cpp in Sources */,
 				2EA7BDEA1BF59FEA0093DD14 /* Socket.cpp in Sources */,
