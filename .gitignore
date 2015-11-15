@@ -1,4 +1,10 @@
-build/*
-*.[oa]
+# Ignore the build and lib directories
+build
+lib/*
 
-.DS_Store 
+# Ignore any executables
+bin/*
+
+# Ignore Mac specific files
+.DS_Store
+
