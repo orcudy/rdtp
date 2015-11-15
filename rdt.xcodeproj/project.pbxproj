@@ -14,8 +14,6 @@
 		2EA5F5EE1BF8206400F47095 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D01BF8206400F47095 /* Header.cpp */; };
 		2EA5F5EF1BF8206400F47095 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
 		2EA5F5F01BF8206400F47095 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
-		2EA5F5F21BF8206400F47095 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D81BF8206400F47095 /* Makefile */; };
-		2EA5F5FF1BF8206400F47095 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5E81BF8206400F47095 /* README.md */; };
 		2EA5F6071BF8218500F47095 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
 		2EA5F6161BF82BF400F47095 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6141BF82BF400F47095 /* client.cpp */; };
 		2EA5F6171BF82BF400F47095 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6151BF82BF400F47095 /* server.cpp */; };
@@ -220,11 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EA5F5F21BF8206400F47095 /* Makefile in Sources */,
 				2EA5F5F01BF8206400F47095 /* TCPCommunicator.cpp in Sources */,
 				2EA5F5EB1BF8206400F47095 /* Error.cpp in Sources */,
 				2EA5F5EE1BF8206400F47095 /* Header.cpp in Sources */,
-				2EA5F5FF1BF8206400F47095 /* README.md in Sources */,
 				2EA5F5ED1BF8206400F47095 /* GBNProtocol.cpp in Sources */,
 				2EA5F6171BF82BF400F47095 /* server.cpp in Sources */,
 				2EA5F5EC1BF8206400F47095 /* FileSplitter.cpp in Sources */,
@@ -382,6 +378,7 @@
 				2EA5F54B1BF80F2400F47095 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

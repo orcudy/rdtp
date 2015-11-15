@@ -29,10 +29,12 @@ Socket::Socket(string ip, int port, TransportLayer type){
 
 void Socket::getAddressInfo(){
   // handle case where server listening on local ip -> ip = NULL
-  char * ip;
-  (this->ip.empty()) ? (ip = NULL) : (ip = (char *)this->ip.c_str());
+  char * c_ip;
+  (this->ip.empty()) ? (c_ip = NULL) : (c_ip = (char *)this->ip.c_str());
   
-  int retval = getaddrinfo(ip, std::to_string(this->port).c_str(), &hints, &res);
+  string string_port = std::to_string(this->port);
+
+  int retval = getaddrinfo(c_ip, string_port.c_str(), &hints, &res);
   if (retval) {
     cout << "Error setting up port: " << gai_strerror(retval) << endl;
     Error::exit(1);
