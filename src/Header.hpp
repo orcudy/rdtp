@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string>
 
+const std::string delimiter = "?";
+
 class Header {
   const static int dataSize = 1000;
   
@@ -23,9 +25,13 @@ class Header {
   int dataLength;
   char data[1000];
   
-  //constructor
+public:
   Header();
+  Header(char * data);
+  
   char * generateMessage();
+  void setData(std::string data);
+
   
 //  int sendSyn(int seq, std::string filename);
 //  int sendSynack(int seq, int ack, int dataLength);

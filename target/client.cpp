@@ -8,6 +8,7 @@
 
 
 #include "Error.hpp"
+#include "Header.hpp"
 #include "Socket.hpp"
 #include "UDPCommunicator.hpp"
 #include <iostream>
@@ -42,10 +43,11 @@ int main(int argc, const char ** argv){
     }
   }
 
+  Header header = Header();
+  header.setData("some data that we need to send over the network");
   
-  string message = "This is my string test";
   UDPCommunicator client = UDPCommunicator(ip, port);
-  client.send(message);
+  client.send(header.generateMessage());
   return 0;
   
 }
