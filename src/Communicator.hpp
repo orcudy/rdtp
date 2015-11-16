@@ -15,22 +15,15 @@
 
 class Communicator {
 protected:
-  //properties
-  int receiveBufferSize;
-  
-  //methods
   double getPortInfo(struct sockaddr *sa);
   std::string getIPAddress(struct sockaddr *sa);
 
 public:
-  //properties
   Socket socket;
-  
-  //methods
+  int receiveBufferSize;
+
   virtual int send(std::string message) = 0;
   virtual std::string receive() = 0;
-  void setReceiveBufferSize(int size){ this->receiveBufferSize = size; };
-  int getRecieveBufferSize(){ return this->receiveBufferSize; };
 };
 
 #endif

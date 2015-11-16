@@ -12,35 +12,20 @@
 using namespace std;
 
 UDPCommunicator::UDPCommunicator(string ip, int port){
+  this->receiveBufferSize = 1000;
   this->socket = Socket(ip, port, UDP);
   this->socket.getAddressInfo();
   this->socket.getDescriptor();
 }
 
 UDPCommunicator::UDPCommunicator(int port){
-  this->socket = Socket("", port, UDP);
-  this->socket.getAddressInfo();
-  this->socket.getDescriptor();
+  UDPCommunicator("", port);
   this->socket.bind();
 }
 
 int UDPCommunicator::send(string message){
-  
-  struct addrinfo hints;
-  struct addrinfo *recieverinfo;
-  
-  memset(&hints, 0, sizeof hints);
-  hints.ai_family = AF_UNSPEC;
-  hints.ai_socktype = SOCK_DGRAM;
-  
-  int retval = getaddrinfo(this->socket.ip.c_str(), (std::to_string(this->socket.port)).c_str(), &hints, &recieverinfo);
-  if (retval != 0) {
-    fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(retval));
-    exit(200);
-  }
-  
-  const char buffer[100] = "This is a test";
-  int nbytes = (int)sendto(this->socket.descriptor, buffer, 100, 0, recieverinfo->ai_addr, recieverinfo->ai_addrlen);
+  char buffer[100] = "This is a test";
+  int nbytes = (int)sendto(this->socket.descriptor, buffer, 100, 0, &this->socket.addressInfo, this->socket.addressInfoLength);
   if (nbytes == -1) {
     cout << "Error sending data: " << strerror(errno) << endl;
   }

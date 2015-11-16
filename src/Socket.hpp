@@ -20,22 +20,23 @@ enum TransportLayer {
 };
 
 class Socket {
-  //properties
+  //socket creation helpers
   struct addrinfo hints;
   struct addrinfo* res;
-
+  
 public:
-  //properties
+  //necessary for Socket::send()
+  struct sockaddr addressInfo;
+  socklen_t addressInfoLength;
+  
   int port;
   int descriptor;
   std::string ip;
   TransportLayer type;
   
-  //constructor
   Socket(std::string ip, int port, TransportLayer type);
   Socket(){};
   
-  //methods
   void getAddressInfo();
   void getDescriptor();
   void bind();

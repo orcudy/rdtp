@@ -13,7 +13,9 @@
 
 class UDPCommunicator: public Communicator {
 public:
+  //create client who communicates with address <ip> on port <port>
   UDPCommunicator(std::string ip, int port);
+  //create server at machine ip listening on port <port>
   UDPCommunicator(int port);
   
   int send(std::string message);
