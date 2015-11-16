@@ -6,11 +6,11 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#include "Communicator.hpp"
-#include <sys/socket.h>
-#include <arpa/inet.h>
 
+#include "Communicator.hpp"
+#include <arpa/inet.h>
 #include <string>
+#include <sys/socket.h>
 
 using namespace std;
 

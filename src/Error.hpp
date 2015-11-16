@@ -9,10 +9,9 @@
 #ifndef COError
 #define COError
 
-#include <unordered_map>
-
 class Error{
 public:
+  static void usage();
   static void exit(int status);
 };
 

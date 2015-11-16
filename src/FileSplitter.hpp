@@ -6,8 +6,8 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#ifndef FileSplitter_hpp
-#define FileSplitter_hpp
+#ifndef COFileSplitter
+#define COFileSplitter
 
 #include <stdio.h>
 #include <string>
@@ -21,4 +21,4 @@ public:
   char ** split();
 };
 
-#endif /* FileSplitter_hpp */
+#endif

@@ -6,9 +6,9 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#ifndef GBNProtocol_hpp
-#define GBNProtocol_hpp
+#ifndef COGBNProtocol
+#define COGBNProtocol
 
 #include <stdio.h>
 
-#endif /* GBNProtocol_hpp */
+#endif 

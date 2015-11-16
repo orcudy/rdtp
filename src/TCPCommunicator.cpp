@@ -6,19 +6,15 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#include <string>
-#include <iostream>
-
-#include <sys/socket.h>
-
-#include <arpa/inet.h>
-#include <stdlib.h>
-
-#include "Socket.hpp"
 
 #include "Error.hpp"
-
+#include "Socket.hpp"
 #include "TCPCommunicator.hpp"
+#include <arpa/inet.h>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <sys/socket.h>
 
 using namespace std;
 

@@ -6,12 +6,11 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#include "Socket.hpp"
 #include "Error.hpp"
-
-#include <string>
+#include "Socket.hpp"
 #include <iostream>
 #include <netdb.h>
+#include <string>
 
 using std::string;
 using std::cout;

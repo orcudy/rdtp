@@ -17,6 +17,7 @@ public:
   UDPCommunicator(std::string ip, int port);
   //create server at machine ip listening on port <port>
   UDPCommunicator(int port);
+  void baseConstructor(UDPCommunicator * communicator, std::string ip, int port);
   
   int send(std::string message);
   std::string receive();

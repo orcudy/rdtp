@@ -8,9 +8,16 @@
 
 #include "Error.hpp"
 #include <iostream>
-#include <vector>
 
 using namespace std;
+
+void Error::usage(){
+  cout << "Usage: client [-i <ip>] [-p <port>]" << endl;
+  cout << "       server [-p <port>]" << endl;
+
+  Error::exit(1);
+}
+
 
 void Error::exit(int status){
   cout << "Exiting." << endl;

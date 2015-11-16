@@ -9,10 +9,10 @@
 #ifndef COSocket
 #define COSocket
 
-#include <string>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netdb.h>
+#include <string>
+#include <sys/socket.h>
+#include <sys/types.h>
 
 enum TransportLayer {
   UDP,

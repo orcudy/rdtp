@@ -6,26 +6,30 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#include <iostream>
 #include "UDPCommunicator.hpp"
+#include <iostream>
 
 using namespace std;
 
+void UDPCommunicator::baseConstructor(UDPCommunicator * communicator, std::string ip, int port){
+  communicator->receiveBufferSize = 1000;
+  communicator->socket = Socket(ip, port, UDP);
+  communicator->socket.getAddressInfo();
+  communicator->socket.getDescriptor();
+}
+
 UDPCommunicator::UDPCommunicator(string ip, int port){
-  this->receiveBufferSize = 1000;
-  this->socket = Socket(ip, port, UDP);
-  this->socket.getAddressInfo();
-  this->socket.getDescriptor();
+  baseConstructor(this, ip, port);
 }
 
 UDPCommunicator::UDPCommunicator(int port){
-  UDPCommunicator("", port);
+  baseConstructor(this, "", port);
   this->socket.bind();
 }
 
 int UDPCommunicator::send(string message){
-  char buffer[100] = "This is a test";
-  int nbytes = (int)sendto(this->socket.descriptor, buffer, 100, 0, &this->socket.addressInfo, this->socket.addressInfoLength);
+  char * msg = (char*)message.c_str();
+  int nbytes = (int)sendto(this->socket.descriptor, msg, strlen(msg), 0, &this->socket.addressInfo, this->socket.addressInfoLength);
   if (nbytes == -1) {
     cout << "Error sending data: " << strerror(errno) << endl;
   }

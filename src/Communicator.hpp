@@ -9,7 +9,6 @@
 #ifndef COCommunicator
 #define COCommunicator
 
-
 #include "Socket.hpp"
 #include <string>
 

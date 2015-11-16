@@ -9,10 +9,9 @@
 #ifndef COTCPCommunicator
 #define COTCPCommunicator
 
-#include <string>
-
 #include "Communicator.hpp"
 #include "Socket.hpp"
+#include <string>
 
 class TCPCommunicator: public Communicator {
 private:
