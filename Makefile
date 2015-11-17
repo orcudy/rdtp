@@ -28,6 +28,7 @@ $(S_TARGET): $(OBJECTS) $(BUILDDIR)/server.o
 $(C_TARGET): $(OBJECTS) $(BUILDDIR)/client.o
 	@echo "Linking client..."
 	$(CC) $^ -o $(C_TARGET)
+	mkdir -p $(BINDIR)
 	mv $(C_TARGET) $(BINDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
@@ -40,6 +41,6 @@ $(BUILDDIR)/%.o: $(T_DIR)/%.$(SRCEXT)
 
 clean:
 	@echo "Cleaning ..."
-	rm -r $(BUILDDIR) $(BINDIR)/$(C_TARGET) $(BINDIR)/$(S_TARGET) 
+	rm -r $(BUILDDIR) $(BINDIR) 
 
 .PHONY: clean

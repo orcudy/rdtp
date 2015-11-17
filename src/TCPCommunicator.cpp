@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string>
 #include <sys/socket.h>
+#include <unistd.h>
 
 using namespace std;
 
