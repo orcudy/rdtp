@@ -52,7 +52,7 @@ void Socket::getDescriptor(){
 }
 
 void Socket::bind(){
-  int retval = ::bind(this->descriptor, res->ai_addr, res->ai_addrlen);
+  int retval = ::bind(this->descriptor, &this->sourceAddress, this->sourceAddressLength);
   if (retval == -1) {
     cout << "Error binding to port " << std::to_string(this->port) << ": " <<  strerror(errno) << endl;
     Error::exit(3);

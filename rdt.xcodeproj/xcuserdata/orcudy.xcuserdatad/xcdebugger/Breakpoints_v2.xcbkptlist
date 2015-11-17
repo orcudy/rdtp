@@ -19,12 +19,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "target/client.cpp"
-            timestampString = "469401368.995122"
+            filePath = "src/Socket.cpp"
+            timestampString = "469494149.723443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54">
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "Socket::bind()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
