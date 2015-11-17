@@ -42,13 +42,13 @@ Subclass of `Communicator` which provides implementations for sending and receiv
 
 - `UDPCommunicator(std::string ip, int port)`
 
-  *Create a client who communicates with host at address <ip> on port <port>.*
+  *Create a client who communicates with host at address \<ip\> on port \<port\>.*
   - **ip**: IP address (dot decimal notation or URL)
   - **port**: port number
 
 - `UDPCommunicator(int port)`
 
-  *Creates a server at host ip listening on port <port>*
+  *Creates a server at host ip listening on port \<port\>*
   - **port**: port number
 
 #### Instance Methods
