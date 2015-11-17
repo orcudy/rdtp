@@ -7,7 +7,6 @@
 //
 
 #include "Header.hpp"
-#include "Parser.hpp"
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
@@ -24,39 +23,25 @@ Header::Header(){
 }
 
 Header::Header(char * data){
-  vector<string> tokens = Parser::parse(string (data), "???");
-  
-  for (vector<string>::iterator it = tokens.begin(); it != tokens.end(); it++){
-    cout << *it << endl;
-  }
-  (tokens[0] == "1") ? (this->syn = true) : (this->syn = false);
-  (tokens[1] == "1") ? (this->synack = true) : (this->synack = false);
-  ack = atoi(tokens[2].c_str());
-  seq = atoi(tokens[3].c_str());
-  dataLength = atoi(tokens[4].c_str());
-  strncpy(this->data, tokens[5].c_str(), dataSize);
+  memcpy(this, data, sizeof(char) * sizeof(Header));
+}
+
+void Header::setData(std::string data){
+  memset(this->data, 0, this->dataSize);
+  memcpy(this->data, data.c_str(), this->dataSize);
 }
 
 char * Header::generateMessage(){
-  string message;
-  (syn) ? message.append("1") : message.append("0");
-  message.append(delimiter);
-  (synack) ? message.append("1") : message.append("0");
-  message.append(delimiter);
-  message.append(std::to_string(ack));
-  message.append(delimiter);
-  message.append(std::to_string(seq));
-  message.append(delimiter);
-  message.append(std::to_string(dataLength));
-  message.append(delimiter);
-  int messageLength = (int)message.length();
-  
-  char * msg = (char*)malloc(sizeof(char) * messageLength * dataSize);
-  strncpy(msg, message.c_str(), messageLength);
-  strncpy(&msg[messageLength], data, dataSize);
+  char * msg = (char*)malloc(sizeof(char) * sizeof(Header));
+  memcpy(msg, this, sizeof(char) * sizeof(Header));
   return msg;
 }
 
-void Header::setData(string data){
-  strncpy(this->data, data.c_str(), dataSize);
+void Header::sendSyn(int seq, std::string filename){
+  
 }
+
+void Header::sendSynack(int seq, int ack, int dataLength){
+  
+}
+

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EA5F5EA1BF8206400F47095 /* Communicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5C81BF8206400F47095 /* Communicator.cpp */; };
 		2EA5F5EB1BF8206400F47095 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
 		2EA5F5EC1BF8206400F47095 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CC1BF8206400F47095 /* FileSplitter.cpp */; };
 		2EA5F5ED1BF8206400F47095 /* GBNProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CE1BF8206400F47095 /* GBNProtocol.cpp */; };
@@ -17,7 +16,6 @@
 		2EA5F6071BF8218500F47095 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
 		2EA5F6161BF82BF400F47095 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6141BF82BF400F47095 /* client.cpp */; };
 		2EA5F6171BF82BF400F47095 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6151BF82BF400F47095 /* server.cpp */; };
-		2EF86BA71BFA7DEE00B4B92A /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EF86BA51BFA7DEE00B4B92A /* Parser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		2E6CD9511BF5913F008F8C46 /* rdt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rdt; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EA5F5C81BF8206400F47095 /* Communicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Communicator.cpp; sourceTree = "<group>"; };
 		2EA5F5C91BF8206400F47095 /* Communicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Communicator.hpp; sourceTree = "<group>"; };
 		2EA5F5CA1BF8206400F47095 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
 		2EA5F5CB1BF8206400F47095 /* Error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Error.hpp; sourceTree = "<group>"; };
@@ -54,8 +51,6 @@
 		2EA5F6061BF8218500F47095 /* UDPCommunicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UDPCommunicator.hpp; sourceTree = "<group>"; };
 		2EA5F6141BF82BF400F47095 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		2EA5F6151BF82BF400F47095 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
-		2EF86BA51BFA7DEE00B4B92A /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
-		2EF86BA61BFA7DEE00B4B92A /* Parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +96,8 @@
 		2EA5F5C71BF8206400F47095 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				2EF86BA51BFA7DEE00B4B92A /* Parser.cpp */,
-				2EF86BA61BFA7DEE00B4B92A /* Parser.hpp */,
 				2EA5F5D21BF8206400F47095 /* Socket.cpp */,
 				2EA5F5D31BF8206400F47095 /* Socket.hpp */,
-				2EA5F5C81BF8206400F47095 /* Communicator.cpp */,
 				2EA5F5C91BF8206400F47095 /* Communicator.hpp */,
 				2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */,
 				2EA5F6061BF8218500F47095 /* UDPCommunicator.hpp */,
@@ -228,12 +220,10 @@
 				2EA5F5EE1BF8206400F47095 /* Header.cpp in Sources */,
 				2EA5F5ED1BF8206400F47095 /* GBNProtocol.cpp in Sources */,
 				2EA5F6171BF82BF400F47095 /* server.cpp in Sources */,
-				2EF86BA71BFA7DEE00B4B92A /* Parser.cpp in Sources */,
 				2EA5F5EC1BF8206400F47095 /* FileSplitter.cpp in Sources */,
 				2EA5F6161BF82BF400F47095 /* client.cpp in Sources */,
 				2EA5F5EF1BF8206400F47095 /* Socket.cpp in Sources */,
 				2EA5F6071BF8218500F47095 /* UDPCommunicator.cpp in Sources */,
-				2EA5F5EA1BF8206400F47095 /* Communicator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

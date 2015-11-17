@@ -38,8 +38,8 @@ void Socket::getAddressInfo(){
     Error::exit(1);
   }
   
-  this->addressInfo = *(*res).ai_addr;
-  this->addressInfoLength = (*res).ai_addrlen;
+  this->sourceAddress = *(*res).ai_addr;
+  this->sourceAddressLength = (*res).ai_addrlen;
 }
 
 
@@ -49,6 +49,7 @@ void Socket::getDescriptor(){
     cout << "Error setting up socket: " << strerror(errno) << endl;
     Error::exit(2);
   }
+  freeaddrinfo(res);
 }
 
 void Socket::bind(){

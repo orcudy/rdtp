@@ -23,11 +23,13 @@ TCPCommunicator::TCPCommunicator(string ip, int port){
   this->concurrentConnections = 5;
 }
 
-string TCPCommunicator::receive(){
-    return "";
+char * TCPCommunicator::receive(){
+  char * message = (char*)malloc(sizeof(char) * 1000);
+  strcpy(message, "TCPCommunicator::recieve() default return");
+  return message;
 }
 
-int TCPCommunicator::send(string message){
+int TCPCommunicator::send(char * message){
   char c_message[100] = "Do you want to build a snowman?";
   return (int)write(this->socket.descriptor, &c_message, 100);
 }
@@ -82,8 +84,6 @@ TCPCommunicator* TCPCommunicator::acceptConnection(){
     exit(7);
   }
   
-  client->socket.ip = getIPAddress(clientsockaddr);
-  client->socket.port = getPortInfo(clientsockaddr);
   return client;
 }
 

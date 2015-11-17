@@ -11,6 +11,7 @@
 
 class Error{
 public:
+  //class methods
   static void usage();
   static void exit(int status);
 };

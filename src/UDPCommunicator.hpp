@@ -13,14 +13,16 @@
 
 class UDPCommunicator: public Communicator {
 public:
+  //constructors
+  void baseConstructor(UDPCommunicator * communicator, std::string ip, int port);
   //create client who communicates with address <ip> on port <port>
   UDPCommunicator(std::string ip, int port);
   //create server at machine ip listening on port <port>
   UDPCommunicator(int port);
-  void baseConstructor(UDPCommunicator * communicator, std::string ip, int port);
   
-  int send(std::string message);
-  std::string receive();
+  //instance methods
+  int send(char * message);
+  char * receive();
 };
 
 #endif

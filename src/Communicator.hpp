@@ -12,17 +12,19 @@
 #include "Socket.hpp"
 #include <string>
 
+// abstract base class
 class Communicator {
-protected:
-  double getPortInfo(struct sockaddr *sa);
-  std::string getIPAddress(struct sockaddr *sa);
-
 public:
+  //constructor
   Socket socket;
+  
+  //instance properties
   int receiveBufferSize;
+  char * receiveBuffer;
 
-  virtual int send(std::string message) = 0;
-  virtual std::string receive() = 0;
+  //pure virtual methods
+  virtual int send(char * message) = 0;
+  virtual char * receive() = 0;
 };
 
 #endif

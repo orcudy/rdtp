@@ -8,11 +8,15 @@
 
 #include "Error.hpp"
 #include "UDPCommunicator.hpp"
+#include "Header.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 
+using namespace std;
+
 int main(int argc, const char ** argv){
   
+  // !! begin command line argument parsing !!
   if (argc > 3){
     Error::usage();
   }
@@ -28,9 +32,15 @@ int main(int argc, const char ** argv){
       port = atoi(argv[index + 1]);
     }
   }
+  // !! end command line argument parsing !!
   
   UDPCommunicator server = UDPCommunicator(port);
-  server.receive();
+  char * message = server.receive();
+  Header * header = ((Header*)message);
+  printf("%s", header->data);
+  
+  
+  
   
   return 0;
 }

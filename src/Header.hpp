@@ -15,28 +15,27 @@
 const std::string delimiter = "?";
 
 class Header {
-  const static int dataSize = 1000;
-  
-  std::string filename;
   bool syn;
   bool synack;
   int ack;
   int seq;
   int dataLength;
-  char data[1000];
+  const static int dataSize = 1000;
+  std::string filename;
   
 public:
+  //constructors
   Header();
   Header(char * data);
   
-  char * generateMessage();
+  //instance properties (& getters/setters)
+  char data[1000];
   void setData(std::string data);
-
   
-//  int sendSyn(int seq, std::string filename);
-//  int sendSynack(int seq, int ack, int dataLength);
-  
-  
+  //instance methods
+  char * generateMessage();
+  void sendSyn(int seq, std::string filename);
+  void sendSynack(int seq, int ack, int dataLength);
 };
 
 #endif

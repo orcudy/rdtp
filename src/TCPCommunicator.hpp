@@ -25,8 +25,8 @@ public:
   TCPCommunicator(){};
   
   //methods
-  int send(std::string message);
-  std::string receive();
+  int send(char * message);
+  char * receive();
   
   void startListening();
   void stopListening();

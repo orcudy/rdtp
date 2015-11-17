@@ -7,12 +7,15 @@
 //
 
 #include "UDPCommunicator.hpp"
+#include "Header.hpp"
+#include "Error.hpp"
 #include <iostream>
 
 using namespace std;
 
 void UDPCommunicator::baseConstructor(UDPCommunicator * communicator, std::string ip, int port){
   communicator->receiveBufferSize = 1000;
+  communicator->receiveBuffer = (char*)malloc(sizeof(char) * receiveBufferSize);
   communicator->socket = Socket(ip, port, UDP);
   communicator->socket.getAddressInfo();
   communicator->socket.getDescriptor();
@@ -27,30 +30,31 @@ UDPCommunicator::UDPCommunicator(int port){
   this->socket.bind();
 }
 
-int UDPCommunicator::send(string message){
-  char * msg = (char*)message.c_str();
-  int nbytes = (int)sendto(this->socket.descriptor, msg, strlen(msg), 0, &this->socket.addressInfo, this->socket.addressInfoLength);
+int UDPCommunicator::send(char * message){
+  int nbytes = (int)sendto(this->socket.descriptor, message, sizeof(char) * sizeof(Header), 0, &this->socket.sourceAddress, this->socket.sourceAddressLength);
   if (nbytes == -1) {
     cout << "Error sending data: " << strerror(errno) << endl;
+    Error::exit(1);
   }
-  cout << "nbytes: " << nbytes << endl;
-  // std::string ip = getIPAddress(clientsockaddr);
-  // double port = getPortInfo(clientsockaddr);
-  //  this->receiver = Socket(ip, port, UDP);
   return nbytes;
 }
 
-string UDPCommunicator::receive(){
-  struct sockaddr client_addr;
-  socklen_t client_addr_len;
-  
-  char recieve_buffer[1000];
-  ssize_t nbytes = 0;
-  if ((nbytes = recvfrom(this->socket.descriptor, recieve_buffer, 1000, 0, &client_addr, &client_addr_len)) == -1){
-    cout << "ERROR recieving";
+char * UDPCommunicator::receive(){
+  if ((recvfrom(this->socket.descriptor, this->receiveBuffer, this->receiveBufferSize, 0, &this->socket.destinationAddress, &this->socket.destinationAddressLength)) == -1){
+    cout << "Error receiving data: " << strerror(errno) << endl;
+    Error::exit(1);
   }
-  
-  cout << recieve_buffer;
-  
-  return string(recieve_buffer);
+  return this->receiveBuffer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
