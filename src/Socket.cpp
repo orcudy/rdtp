@@ -42,7 +42,6 @@ void Socket::getAddressInfo(){
   this->sourceAddressLength = (*res).ai_addrlen;
 }
 
-
 void Socket::getDescriptor(){
   this->descriptor = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
   if (this->descriptor == -1) {

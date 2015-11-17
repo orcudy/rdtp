@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+class GBNProtocol {
+
+};
+
 #endif 
