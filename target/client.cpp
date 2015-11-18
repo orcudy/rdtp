@@ -45,17 +45,22 @@ int main(int argc, const char ** argv){
     }
   }
   // !! end command line argument parsing !!
-//
-//  Header header = Header();
-//  header.setData("Franzen trust fund thundercats single-origin coffee, next level scenester ethical farm-to-table photo booth ugh pug cold-pressed. Offal irony master cleanse direct trade, swag meggings hashtag shoreditch. Swag organic dreamcatcher lo-fi. Heirloom actually retro austin four loko 3 wolf moon. Chicharrones four loko yuccie distillery hoodie authentic. Fixie biodiesel thundercats, wolf fap knausgaard bespoke. Quinoa retro tilde keffiyeh letterpress, selvage banh mi farm-to-table franzen. Organic irony squid pitchfork, meggings artisan shabby chic retro microdosing craft beer typewriter twee. VHS jean shorts tacos +1, kogi pitchfork synth. Locavore intelligentsia chambray, meggings marfa distillery yr letterpress mixtape. Photo booth put a bird on it normcore listicle, mixtape kogi selvage leggings. Fap dreamcatcher ramps, jean shorts put a bird on it schlitz wayfarers helvetica heirloom tacos beard four dollar toast yr.");
-//  
-//  UDPCommunicator client = UDPCommunicator(ip, port);
-//  client.send(header.generateMessage());
+  
+  
+  Header header = Header();
+  header.setData("Franzen trust fund thundercats single-origin coffee, next level scenester ethical farm-to-table photo booth ugh pug cold-pressed. Offal irony master cleanse direct trade, swag meggings hashtag shoreditch. Swag organic dreamcatcher lo-fi. Heirloom actually retro austin four loko 3 wolf moon. Chicharrones four loko yuccie distillery hoodie authentic. Fixie biodiesel thundercats, wolf fap knausgaard bespoke. Quinoa retro tilde keffiyeh letterpress, selvage banh mi farm-to-table franzen. Organic irony squid pitchfork, meggings artisan shabby chic retro microdosing craft beer typewriter twee. VHS jean shorts tacos +1, kogi pitchfork synth. Locavore intelligentsia chambray, meggings marfa distillery yr letterpress mixtape. Photo booth put a bird on it normcore listicle, mixtape kogi selvage leggings. Fap dreamcatcher ramps, jean shorts put a bird on it schlitz wayfarers helvetica heirloom tacos beard four dollar toast yr.");
+  
+  UDPCommunicator client = UDPCommunicator(ip, port);
+  
+  for(int i = 0; i < 10; i++){
+    client.send(header.generateMessage());
     
-    FileSplitter fs = FileSplitter("/Users/chloedrazen/testfile.txt", 1000);
-    char ** array = fs.split();
-
-    
-
+    char * receivedMessage = client.receive();
+    //  Header * receivedHeader = ((Header*)receivedMessage);
+    cout << receivedMessage << endl;
+  }
+  
+  
+  
   return 0;
 }
