@@ -38,8 +38,8 @@ void Socket::getAddressInfo(){
     Error::exit(1);
   }
   
-  this->sourceAddress = *(*res).ai_addr;
-  this->sourceAddressLength = (*res).ai_addrlen;
+  this->destinationAddress = *(*res).ai_addr;
+  this->destinationAddressLength = (*res).ai_addrlen;
 }
 
 void Socket::getDescriptor(){
@@ -52,6 +52,9 @@ void Socket::getDescriptor(){
 }
 
 void Socket::bind(){
+  this->sourceAddress = this->destinationAddress;
+  this->sourceAddressLength = this->destinationAddressLength;
+  
   int retval = ::bind(this->descriptor, &this->sourceAddress, this->sourceAddressLength);
   if (retval == -1) {
     cout << "Error binding to port " << std::to_string(this->port) << ": " <<  strerror(errno) << endl;

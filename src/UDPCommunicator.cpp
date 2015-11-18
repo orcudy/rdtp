@@ -31,7 +31,7 @@ UDPCommunicator::UDPCommunicator(int port){
 }
 
 int UDPCommunicator::send(char * message){
-  int nbytes = (int)sendto(this->socket.descriptor, message, sizeof(char) * sizeof(Header), 0, &this->socket.sourceAddress, this->socket.sourceAddressLength);
+  int nbytes = (int)sendto(this->socket.descriptor, message, sizeof(char) * sizeof(Header), 0, &this->socket.destinationAddress, this->socket.destinationAddressLength);
   if (nbytes == -1) {
     cout << "Error sending data: " << strerror(errno) << endl;
     Error::exit(1);
