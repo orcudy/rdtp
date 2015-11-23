@@ -8,9 +8,14 @@ bin/*
 # Ignore Mac specific files
 .DS_Store
 
-# Ignore Xcode preference files
-.pbxproj
-.xcuserstate
-.xcbkptlist
-.xcscheme
+# Exclude user-specific XCode 3 and 4 files
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcuserdata
+xcuserdata/
+*/xcuserdata/
 
