@@ -13,13 +13,14 @@
 #include <string>
 
 class FileSplitter {
-    std::string filename;
-    int chunkSize;
+  std::string filename;
+  int chunkSize;
   
 public:
-    FileSplitter(std::string filename, int chunkSize);
-    char ** split();
-    size_t fileSize;
+  FileSplitter(std::string filename, int chunkSize);
+  FileSplitter(){};
+  char ** split();
+  size_t fileSize;
 };
 
 #endif
