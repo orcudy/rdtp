@@ -36,6 +36,12 @@ int UDPCommunicator::send(char * message){
     cout << "Error sending data: " << strerror(errno) << endl;
     Error::exit(1);
   }
+  if (sendLog){
+    cout << "Sent Data" << endl;
+    Header * header = ((Header*)message);
+    header->description();
+    cout << endl;
+  }
   return nbytes;
 }
 
@@ -43,6 +49,12 @@ char * UDPCommunicator::receive(){
   if ((recvfrom(this->socket.descriptor, this->receiveBuffer, this->receiveBufferSize, 0, &this->socket.destinationAddress, &this->socket.destinationAddressLength)) == -1){
     cout << "Error receiving data: " << strerror(errno) << endl;
     Error::exit(1);
+  }
+  if (receieveLog){
+    cout << "Received Data" << endl;
+    Header * header = ((Header*)this->receiveBuffer);
+    header->description();
+    cout << endl;
   }
   return this->receiveBuffer;
 }

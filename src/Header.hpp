@@ -12,30 +12,30 @@
 #include <stdio.h>
 #include <string>
 
-const std::string delimiter = "?";
-
 class Header {
+public:
   bool syn;
   bool synack;
-  int ack;
-  int seq;
-  int dataLength;
-  const static int dataSize = 1000;
-  std::string filename;
+  int ackNum;
+  int seqNum;
+  int dataSize;
+  const static int chunkSize = 1000;
+
+  char filename[200];
+  int fileSize;
   
-public:
   //constructors
   Header();
   Header(char * data);
   
   //instance properties (& getters/setters)
   char data[1000];
-  void setData(std::string data);
+  void setData(char * data);
   
   //instance methods
   char * generateMessage();
-  void sendSyn(int seq, std::string filename);
-  void sendSynack(int seq, int ack, int dataLength);
+  void description();
+
 };
 
 #endif
