@@ -6,9 +6,22 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#ifndef Timer_hpp
-#define Timer_hpp
+#ifndef COTimer
+#define COTimer
 
 #include <stdio.h>
+#include <sys/time.h>
 
-#endif /* Timer_hpp */
+class Timer {
+  timeval startTime;
+  
+public:
+  bool timing;
+
+  void start();
+  void stop();
+  float elapsedTime();
+  
+};
+
+#endif
