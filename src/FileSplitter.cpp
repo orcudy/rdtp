@@ -20,9 +20,12 @@ FileSplitter::FileSplitter(std::string filename, int chunkSize)
 {
     this->filename = filename;
     this->chunkSize = chunkSize;
-    
+  
+  ifstream file(filename.c_str());
+  if (file.good()) {
     ifstream in(filename.c_str(), ifstream::ate | ifstream::binary);
     fileSize = in.tellg();
+  }
 }
 
 char ** FileSplitter::split()
