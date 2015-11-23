@@ -10,17 +10,24 @@
 #define CDGBNClientProtocol
 
 #include <stdio.h>
+#include "UDPCommunicator.hpp"
 
 
 class GBNClientProtocol {
+public:
   //client
-  GBNClientProtocol(int windowSize, char * ip, int port);
+  GBNClientProtocol(int windowSize, std::string ip, int port);
   
-  // RECEIVING SIDE (Client)
   int corruptionProbability;
   int lostProbability;
   int expectedSeq;
   int bytesReceived;
+  
+  int windowSize;
+  
+  void sendSyn();
+  
+  UDPCommunicator communicator; 
 };
 
 
