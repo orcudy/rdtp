@@ -1,5 +1,5 @@
 CC := g++
-CFLAGS := -Wall
+CFLAGS := -g -Wall
 
 BINDIR := bin
 
@@ -41,6 +41,6 @@ $(BUILDDIR)/%.o: $(T_DIR)/%.$(SRCEXT)
 
 clean:
 	@echo "Cleaning ..."
-	rm -r $(BUILDDIR) $(BINDIR) 
+	rm -r $(BUILDDIR) $(BINDIR)/$(S_TARGET) $(BINDIR)/$(C_TARGET)
 
 .PHONY: clean
