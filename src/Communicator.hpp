@@ -18,6 +18,10 @@ public:
   //constructor
   Socket socket;
   
+  //print output/input
+  bool receieveLog;
+  bool sendLog;
+  
   //instance properties
   int receiveBufferSize;
   char * receiveBuffer;

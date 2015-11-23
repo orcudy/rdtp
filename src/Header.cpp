@@ -16,19 +16,19 @@ using namespace std;
 Header::Header(){
   syn = false;
   synack = false;
-  ack = -1;
-  seq = -1;
-  dataLength = -1;
-  memset(this->data, Header::dataSize, '\0');
+  ackNum = -1;
+  seqNum = -1;
+  dataSize = -1;
+  memset(this->data, '\0', this->chunkSize);
 }
 
 Header::Header(char * data){
   memcpy(this, data, sizeof(char) * sizeof(Header));
 }
 
-void Header::setData(std::string data){
-  memset(this->data, 0, this->dataSize);
-  memcpy(this->data, data.c_str(), this->dataSize);
+void Header::setData(char * data) {
+  memset(this->data, '\0', this->chunkSize);
+  memcpy(this->data, data, this->chunkSize);
 }
 
 char * Header::generateMessage(){
@@ -37,11 +37,15 @@ char * Header::generateMessage(){
   return msg;
 }
 
-void Header::sendSyn(int seq, std::string filename){
-  
-}
-
-void Header::sendSynack(int seq, int ack, int dataLength){
-  
+void Header::description(){
+  cout << "syn: " << syn << endl;
+  cout << "synack: " << synack << endl;
+  cout << "ackNum: " << ackNum << endl;
+  cout << "seqNum: " << seqNum << endl;
+  cout << "dataSize: " << dataSize << endl;
+  cout << "chunkSize: " << chunkSize << endl;
+  printf("filename: %s\n", filename);
+  cout << "fileSize: " << fileSize << endl;
+  printf("data: %s\n", data);
 }
 
