@@ -9,8 +9,8 @@ bin/*
 .DS_Store
 
 # Ignore Xcode preference files
-*.pbxproj
-*.xcuserstate
-*.xcbkptlist
-*.xcscheme
+.pbxproj
+.xcuserstate
+.xcbkptlist
+.xcscheme
 
