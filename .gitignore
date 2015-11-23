@@ -8,3 +8,9 @@ bin/*
 # Ignore Mac specific files
 .DS_Store
 
+# Ignore Xcode preference files
+*.pbxproj
+*.xcuserstate
+*.xcbkptlist
+*.xcscheme
+
