@@ -24,8 +24,15 @@ void GBNClientProtocol::sendSyn(){
   Header header = Header();
   header.syn = true;
 
-  const char * filename = "/Users/orcudy/Desktop/rdt/test.txt";
+  const char * filename = "/Users/orcudy/Desktop/rdt/tests/test.txt";
   strncpy(header.filename, filename, strlen(filename));
   header.seqNum = 0;
+  communicator.send(header.generateMessage());
+}
+
+void GBNClientProtocol::sendAck(int ackNum, int seqNum){
+  Header header = Header();
+  header.ackNum = ackNum;
+  header.seqNum = seqNum;
   communicator.send(header.generateMessage());
 }

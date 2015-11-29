@@ -26,6 +26,7 @@ public:
   int windowSize;
   
   void sendSyn();
+  void sendAck(int ackNum, int seqNum);
   
   UDPCommunicator communicator; 
 };
