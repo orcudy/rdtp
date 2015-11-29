@@ -67,6 +67,7 @@ int main(int argc, const char ** argv){
   // !! end command line argument parsing !!
   
 
+
   GBNClientProtocol client = GBNClientProtocol(10, ip, port);
   client.communicator.sendLog = printSent;
   client.communicator.receieveLog = printReceived;
@@ -76,6 +77,7 @@ int main(int argc, const char ** argv){
   char* message = client.communicator.receive();
   Header * header = ((Header*)message);
   cout << header->ackNum;
+
   
   
   return 0;
