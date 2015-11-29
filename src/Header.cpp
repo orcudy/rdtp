@@ -19,7 +19,10 @@ Header::Header(){
   ackNum = -1;
   seqNum = -1;
   dataSize = -1;
+  fileSize = -1;
   memset(this->data, '\0', this->chunkSize);
+  memset(this->filename, '\0', maxFilenameSize);
+
 }
 
 Header::Header(char * data){
