@@ -19,9 +19,10 @@ public:
   int ackNum;
   int seqNum;
   int dataSize;
-  const static int chunkSize = 1000;
+  const static int chunkSize = 100;
 
-  char filename[200];
+  const static int maxFilenameSize = 200;
+  char filename[maxFilenameSize];
   int fileSize;
   
   //constructors

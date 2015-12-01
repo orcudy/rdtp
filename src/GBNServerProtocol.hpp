@@ -15,34 +15,36 @@
 #include "Timer.hpp"
 
 
-struct PacketState {
-  bool ack;
-  bool sent;
-};
-
 class GBNServerProtocol{
 
 public:
+  UDPCommunicator communicator;
+
   //timers
-  Timer synackTimer;
-  Timer ackTimer;
+  Timer timeoutTimer;
   float timeoutInterval;
   
   //window
+  int currentWindowBase;
   int windowSize;
-  int windowBase;
-  PacketState * stateWindow;
-  char ** fileData;
   
   //data
   int chunkSize;
-  int expectedSeqNum;
-  int expectedAckNum;
-  int receivedSeqNum;
+  char ** fileData;
+  int totalChunks;
+  
+  //incoming headers
   int receivedAckNum;
+  int receivedSeqNum;
+  
+  //outgoing headers
+  int currentSequenceNum;
+  int expectedAckNum;
   
   //file splitting
   FileSplitter fileSplitter;
+  
+  bool verbose;
   
   //constructors
   GBNServerProtocol(int windowSize, double timeoutInterval, int port);
@@ -51,14 +53,9 @@ public:
   bool receivedSyn();
   void sendSynack(int seqNum, int ackNum);
 
-  
   //data transfer
   bool receivedAck();
-  void sendData();
-  
-  UDPCommunicator communicator;
-
-
+  void sendData(int packetNum);
 };
 #endif
 

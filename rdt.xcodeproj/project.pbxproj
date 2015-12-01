@@ -7,22 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E3BEE811BFC27B600301F74 /* GBNClientProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */; };
-		2E3BEE871BFC27D800301F74 /* GBNServerProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */; };
-		2E4CB63D1C02DD06002EB2BF /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63B1C02DD06002EB2BF /* Timer.cpp */; };
-		2E4CB63F1C02DED8002EB2BF /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63E1C02DED8002EB2BF /* timer.cpp */; };
-		2EA5F5EB1BF8206400F47095 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
-		2EA5F5EC1BF8206400F47095 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CC1BF8206400F47095 /* FileSplitter.cpp */; };
-		2EA5F5EE1BF8206400F47095 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D01BF8206400F47095 /* Header.cpp */; };
-		2EA5F5EF1BF8206400F47095 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
-		2EA5F5F01BF8206400F47095 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
-		2EA5F6071BF8218500F47095 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
-		2EA5F6161BF82BF400F47095 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6141BF82BF400F47095 /* client.cpp */; };
-		2EA5F6171BF82BF400F47095 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6151BF82BF400F47095 /* server.cpp */; };
+
+		2E1C40AF1C06ACAB0022C6F4 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
+		2E1C40B01C06ACAB0022C6F4 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
+		2E1C40B21C06ACAB0022C6F4 /* GBNClientProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */; };
+		2E1C40B31C06ACAB0022C6F4 /* GBNServerProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */; };
+		2E1C40B41C06ACAB0022C6F4 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D01BF8206400F47095 /* Header.cpp */; };
+		2E1C40B51C06ACAB0022C6F4 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63B1C02DD06002EB2BF /* Timer.cpp */; };
+		2E1C40B71C06ACAB0022C6F4 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CC1BF8206400F47095 /* FileSplitter.cpp */; };
+		2E1C40B81C06ACAB0022C6F4 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6141BF82BF400F47095 /* client.cpp */; };
+		2E1C40B91C06ACAB0022C6F4 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
+		2E1C40BA1C06ACAB0022C6F4 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
+		2E1C40C31C06ADA50022C6F4 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
+		2E1C40C41C06ADA50022C6F4 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
+		2E1C40C51C06ADA50022C6F4 /* GBNClientProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */; };
+		2E1C40C61C06ADA50022C6F4 /* GBNServerProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */; };
+		2E1C40C71C06ADA50022C6F4 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D01BF8206400F47095 /* Header.cpp */; };
+		2E1C40C81C06ADA50022C6F4 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63B1C02DD06002EB2BF /* Timer.cpp */; };
+		2E1C40C91C06ADA50022C6F4 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CC1BF8206400F47095 /* FileSplitter.cpp */; };
+		2E1C40CB1C06ADA50022C6F4 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
+		2E1C40CC1C06ADA50022C6F4 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
+		2E1C40D31C06ADBB0022C6F4 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6151BF82BF400F47095 /* server.cpp */; };
+		2E1C40D61C06ADC70022C6F4 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
+		2E1C40D71C06ADC70022C6F4 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
+		2E1C40D81C06ADC70022C6F4 /* GBNClientProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */; };
+		2E1C40D91C06ADC70022C6F4 /* GBNServerProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */; };
+		2E1C40DB1C06ADC70022C6F4 /* Header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D01BF8206400F47095 /* Header.cpp */; };
+		2E1C40DC1C06ADC70022C6F4 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63B1C02DD06002EB2BF /* Timer.cpp */; };
+		2E1C40DD1C06ADC70022C6F4 /* FileSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CC1BF8206400F47095 /* FileSplitter.cpp */; };
+		2E1C40DE1C06ADC70022C6F4 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
+		2E1C40DF1C06ADC70022C6F4 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
+		2E1C40E61C06ADDD0022C6F4 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63E1C02DED8002EB2BF /* timer.cpp */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2E6CD94F1BF5913F008F8C46 /* CopyFiles */ = {
+		2E1C40BC1C06ACAB0022C6F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2E1C40CE1C06ADA50022C6F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2E1C40E11C06ADC70022C6F4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -34,6 +72,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+
+		2E1C40C01C06ACAB0022C6F4 /* client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = client; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E1C40D21C06ADA50022C6F4 /* server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = server; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E1C40E51C06ADC70022C6F4 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBNClientProtocol.cpp; sourceTree = "<group>"; };
 		2E3BEE801BFC27B600301F74 /* GBNClientProtocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GBNClientProtocol.hpp; sourceTree = "<group>"; };
 		2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBNServerProtocol.cpp; sourceTree = "<group>"; };
@@ -41,7 +84,7 @@
 		2E4CB63B1C02DD06002EB2BF /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		2E4CB63C1C02DD06002EB2BF /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		2E4CB63E1C02DED8002EB2BF /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
-		2E6CD9511BF5913F008F8C46 /* rdt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rdt; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		2EA5F5C91BF8206400F47095 /* Communicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Communicator.hpp; sourceTree = "<group>"; };
 		2EA5F5CA1BF8206400F47095 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
 		2EA5F5CB1BF8206400F47095 /* Error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Error.hpp; sourceTree = "<group>"; };
@@ -62,7 +105,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2E6CD94E1BF5913F008F8C46 /* Frameworks */ = {
+		2E1C40BB1C06ACAB0022C6F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E1C40CD1C06ADA50022C6F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E1C40E01C06ADC70022C6F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -83,7 +140,9 @@
 		2E6CD9521BF5913F008F8C46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2E6CD9511BF5913F008F8C46 /* rdt */,
+				2E1C40C01C06ACAB0022C6F4 /* client */,
+				2E1C40D21C06ADA50022C6F4 /* server */,
+				2E1C40E51C06ADC70022C6F4 /* tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,39 +212,56 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		2EA5F5481BF80F2400F47095 /* Makefile */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 2EA5F5491BF80F2400F47095 /* Build configuration list for PBXLegacyTarget "Makefile" */;
-			buildPhases = (
-			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/orcudy/Desktop/rdt;
-			dependencies = (
-			);
-			name = Makefile;
-			passBuildSettingsInEnvironment = 1;
-			productName = Makefile;
-		};
-/* End PBXLegacyTarget section */
-
 /* Begin PBXNativeTarget section */
-		2E6CD9501BF5913F008F8C46 /* rdt */ = {
+		2E1C40AD1C06ACAB0022C6F4 /* client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E6CD9581BF5913F008F8C46 /* Build configuration list for PBXNativeTarget "rdt" */;
+			buildConfigurationList = 2E1C40BD1C06ACAB0022C6F4 /* Build configuration list for PBXNativeTarget "client" */;
 			buildPhases = (
-				2E6CD94D1BF5913F008F8C46 /* Sources */,
-				2E6CD94E1BF5913F008F8C46 /* Frameworks */,
-				2E6CD94F1BF5913F008F8C46 /* CopyFiles */,
+				2E1C40AE1C06ACAB0022C6F4 /* Sources */,
+				2E1C40BB1C06ACAB0022C6F4 /* Frameworks */,
+				2E1C40BC1C06ACAB0022C6F4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = rdt;
+			name = client;
 			productName = rdt;
-			productReference = 2E6CD9511BF5913F008F8C46 /* rdt */;
+			productReference = 2E1C40C01C06ACAB0022C6F4 /* client */;
+			productType = "com.apple.product-type.tool";
+		};
+		2E1C40C11C06ADA50022C6F4 /* server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E1C40CF1C06ADA50022C6F4 /* Build configuration list for PBXNativeTarget "server" */;
+			buildPhases = (
+				2E1C40C21C06ADA50022C6F4 /* Sources */,
+				2E1C40CD1C06ADA50022C6F4 /* Frameworks */,
+				2E1C40CE1C06ADA50022C6F4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = server;
+			productName = rdt;
+			productReference = 2E1C40D21C06ADA50022C6F4 /* server */;
+			productType = "com.apple.product-type.tool";
+		};
+		2E1C40D41C06ADC70022C6F4 /* tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E1C40E21C06ADC70022C6F4 /* Build configuration list for PBXNativeTarget "tests" */;
+			buildPhases = (
+				2E1C40D51C06ADC70022C6F4 /* Sources */,
+				2E1C40E01C06ADC70022C6F4 /* Frameworks */,
+				2E1C40E11C06ADC70022C6F4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tests;
+			productName = rdt;
+			productReference = 2E1C40E51C06ADC70022C6F4 /* tests */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -196,14 +272,6 @@
 			attributes = {
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Chris Orcutt";
-				TargetAttributes = {
-					2E6CD9501BF5913F008F8C46 = {
-						CreatedOnToolsVersion = 7.1;
-					};
-					2EA5F5481BF80F2400F47095 = {
-						CreatedOnToolsVersion = 7.1.1;
-					};
-				};
 			};
 			buildConfigurationList = 2E6CD94C1BF5913F008F8C46 /* Build configuration list for PBXProject "rdt" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -217,35 +285,112 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2E6CD9501BF5913F008F8C46 /* rdt */,
-				2EA5F5481BF80F2400F47095 /* Makefile */,
+				2E1C40AD1C06ACAB0022C6F4 /* client */,
+				2E1C40C11C06ADA50022C6F4 /* server */,
+				2E1C40D41C06ADC70022C6F4 /* tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2E6CD94D1BF5913F008F8C46 /* Sources */ = {
+		2E1C40AE1C06ACAB0022C6F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EA5F5F01BF8206400F47095 /* TCPCommunicator.cpp in Sources */,
-				2EA5F5EB1BF8206400F47095 /* Error.cpp in Sources */,
-				2E4CB63F1C02DED8002EB2BF /* timer.cpp in Sources */,
-				2E3BEE811BFC27B600301F74 /* GBNClientProtocol.cpp in Sources */,
-				2E3BEE871BFC27D800301F74 /* GBNServerProtocol.cpp in Sources */,
-				2EA5F5EE1BF8206400F47095 /* Header.cpp in Sources */,
-				2E4CB63D1C02DD06002EB2BF /* Timer.cpp in Sources */,
-				2EA5F6171BF82BF400F47095 /* server.cpp in Sources */,
-				2EA5F5EC1BF8206400F47095 /* FileSplitter.cpp in Sources */,
-				2EA5F6161BF82BF400F47095 /* client.cpp in Sources */,
-				2EA5F5EF1BF8206400F47095 /* Socket.cpp in Sources */,
-				2EA5F6071BF8218500F47095 /* UDPCommunicator.cpp in Sources */,
+
+				2E1C40AF1C06ACAB0022C6F4 /* TCPCommunicator.cpp in Sources */,
+				2E1C40B01C06ACAB0022C6F4 /* Error.cpp in Sources */,
+				2E1C40B21C06ACAB0022C6F4 /* GBNClientProtocol.cpp in Sources */,
+				2E1C40B31C06ACAB0022C6F4 /* GBNServerProtocol.cpp in Sources */,
+				2E1C40B41C06ACAB0022C6F4 /* Header.cpp in Sources */,
+				2E1C40B51C06ACAB0022C6F4 /* Timer.cpp in Sources */,
+				2E1C40B71C06ACAB0022C6F4 /* FileSplitter.cpp in Sources */,
+				2E1C40B81C06ACAB0022C6F4 /* client.cpp in Sources */,
+				2E1C40B91C06ACAB0022C6F4 /* Socket.cpp in Sources */,
+				2E1C40BA1C06ACAB0022C6F4 /* UDPCommunicator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E1C40C21C06ADA50022C6F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E1C40C31C06ADA50022C6F4 /* TCPCommunicator.cpp in Sources */,
+				2E1C40C41C06ADA50022C6F4 /* Error.cpp in Sources */,
+				2E1C40C51C06ADA50022C6F4 /* GBNClientProtocol.cpp in Sources */,
+				2E1C40C61C06ADA50022C6F4 /* GBNServerProtocol.cpp in Sources */,
+				2E1C40D31C06ADBB0022C6F4 /* server.cpp in Sources */,
+				2E1C40C71C06ADA50022C6F4 /* Header.cpp in Sources */,
+				2E1C40C81C06ADA50022C6F4 /* Timer.cpp in Sources */,
+				2E1C40C91C06ADA50022C6F4 /* FileSplitter.cpp in Sources */,
+				2E1C40CB1C06ADA50022C6F4 /* Socket.cpp in Sources */,
+				2E1C40CC1C06ADA50022C6F4 /* UDPCommunicator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E1C40D51C06ADC70022C6F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E1C40D61C06ADC70022C6F4 /* TCPCommunicator.cpp in Sources */,
+				2E1C40D71C06ADC70022C6F4 /* Error.cpp in Sources */,
+				2E1C40D81C06ADC70022C6F4 /* GBNClientProtocol.cpp in Sources */,
+				2E1C40E61C06ADDD0022C6F4 /* timer.cpp in Sources */,
+				2E1C40D91C06ADC70022C6F4 /* GBNServerProtocol.cpp in Sources */,
+				2E1C40DB1C06ADC70022C6F4 /* Header.cpp in Sources */,
+				2E1C40DC1C06ADC70022C6F4 /* Timer.cpp in Sources */,
+				2E1C40DD1C06ADC70022C6F4 /* FileSplitter.cpp in Sources */,
+				2E1C40DE1C06ADC70022C6F4 /* Socket.cpp in Sources */,
+				2E1C40DF1C06ADC70022C6F4 /* UDPCommunicator.cpp in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2E1C40BE1C06ACAB0022C6F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2E1C40BF1C06ACAB0022C6F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2E1C40D01C06ADA50022C6F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2E1C40D11C06ADA50022C6F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2E1C40E31C06ADC70022C6F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2E1C40E41C06ADC70022C6F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		2E6CD9561BF5913F008F8C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -325,69 +470,41 @@
 			};
 			name = Release;
 		};
-		2E6CD9591BF5913F008F8C46 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		2E6CD95A1BF5913F008F8C46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		2EA5F54A1BF80F2400F47095 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		2EA5F54B1BF80F2400F47095 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E1C40BD1C06ACAB0022C6F4 /* Build configuration list for PBXNativeTarget "client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E1C40BE1C06ACAB0022C6F4 /* Debug */,
+				2E1C40BF1C06ACAB0022C6F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E1C40CF1C06ADA50022C6F4 /* Build configuration list for PBXNativeTarget "server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E1C40D01C06ADA50022C6F4 /* Debug */,
+				2E1C40D11C06ADA50022C6F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E1C40E21C06ADC70022C6F4 /* Build configuration list for PBXNativeTarget "tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E1C40E31C06ADC70022C6F4 /* Debug */,
+				2E1C40E41C06ADC70022C6F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2E6CD94C1BF5913F008F8C46 /* Build configuration list for PBXProject "rdt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E6CD9561BF5913F008F8C46 /* Debug */,
 				2E6CD9571BF5913F008F8C46 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2E6CD9581BF5913F008F8C46 /* Build configuration list for PBXNativeTarget "rdt" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2E6CD9591BF5913F008F8C46 /* Debug */,
-				2E6CD95A1BF5913F008F8C46 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EA5F5491BF80F2400F47095 /* Build configuration list for PBXLegacyTarget "Makefile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EA5F54A1BF80F2400F47095 /* Debug */,
-				2EA5F54B1BF80F2400F47095 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -66,16 +66,19 @@ int main(int argc, const char ** argv){
   }
   // !! end command line argument parsing !!
   
-
+  
   GBNClientProtocol client = GBNClientProtocol(10, ip, port);
   client.communicator.sendLog = printSent;
   client.communicator.receieveLog = printReceived;
   
   client.sendSyn();
-
-  char* message = client.communicator.receive();
-  Header * header = ((Header*)message);
-  cout << header->ackNum;
+  
+  while(true){
+    char* message = client.communicator.receive();
+    Header * header = ((Header*)message);
+    cout << header->ackNum;
+    client.sendAck(0, 0);
+  }
   
   
   return 0;
