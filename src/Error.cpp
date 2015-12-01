@@ -12,7 +12,7 @@
 using namespace std;
 
 void Error::usage(){
-  cout << "Usage: client [-i <ip>] [-p <port>]" << endl;
+  cout << "Usage: client --filename <name> [-i <ip>] [-p <port>] [-lProb <probability>] [-cProb <probability>] [--timeout <seconds>]  " << endl;
   cout << "       server [-p <port>]" << endl;
   Error::exit(1);
 }
