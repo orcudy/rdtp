@@ -17,21 +17,23 @@
 using namespace std;
 
 
-GBNClientProtocol::GBNClientProtocol(int windowSize, string ip, int port, string fname)
+GBNClientProtocol::GBNClientProtocol(double TOInterval, string ip, int port, string fname, double lProb, double cProb)
 {
     communicator = UDPCommunicator(ip, port);
-    this->windowSize = windowSize;
     //Double check this:
     expectedAck = 0;
-    expectedSeq = 0;
+    lostProbability = lProb;
+    corruptionProbability = cProb;
+    currentSeq = 0;
     filename = fname;
+    timeoutInterval = TOInterval;
 }
 
 void GBNClientProtocol::sendSyn(std::string filename)
 {
     Header header = Header();
     header.syn = true;
-    header.seqNum = 0; //for now
+    header.seqNum = currentSeq; 
     strncpy(header.filename, filename.c_str(), filename.length());
     //filename = header.filename; //wrong?
     
@@ -47,16 +49,17 @@ void GBNClientProtocol::sendAck(int seqNum, int ackNum){
     communicator.send(header.generateMessage());
 }
 
-void GBNClientProtocol::receiveSynAck()
+bool GBNClientProtocol::receiveSynAck()
 {
     char* message = communicator.receive();
     Header * header = ((Header *) message);
     
+    if(!header->synack)
+        return false;
+    
     fileLength = header->fileSize; //Check this?!
     
-
-    sendAck(0, 0);
-    
+    return true;
     
 }
 
@@ -67,22 +70,15 @@ void GBNClientProtocol::receiveData()
     char* message = communicator.receive();
     Header * header = ((Header *) message);
     
-    if(header->ackNum == expectedAck)
+    if(header->ackNum == expectedAck && !badPacketProb(lostProbability) && !badPacketProb(corruptionProbability))
     {
         writeTofile(header->data);
         expectedAck++;
         bytesReceived += header->dataSize;
-        
-        //Not totally sure how to update expectedSeq...
-        expectedSeq++;
+
     }
     
-    //Check if end of file:
-    if(bytesReceived >= fileLength)
-    {
-        //Begin closing connection
-    }
-
+    sendAck(currentSeq, expectedAck);
     
 }
 
@@ -92,4 +88,14 @@ void GBNClientProtocol::writeTofile(std::string data)
     outputFile.open(filename, ios::app);
     outputFile << data;
     
+}
+
+//Returns true is packet is lost, false otherwise
+bool GBNClientProtocol::badPacketProb(double lostProbability)
+{
+    int test = rand() % 100 + 1;
+    
+    if(test <= lostProbability*100)
+        return true;
+    return false;
 }

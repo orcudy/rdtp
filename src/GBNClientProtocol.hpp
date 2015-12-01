@@ -13,43 +13,42 @@
 
 #include <string>
 #include "UDPCommunicator.hpp"
-
-
+#include "Timer.hpp"
 
 
 class GBNClientProtocol {
 public:
 
     //client
-    GBNClientProtocol(int windowSize, std::string ip, int port, std::string fname);
+    GBNClientProtocol(double TOInterval, std::string ip, int port, std::string fname, double lProb, double cProb);
     
     // RECEIVING SIDE (Client)
-    int corruptionProbability;
-    int lostProbability;
-    int expectedSeq;
+    double corruptionProbability;
+    double lostProbability;
+    int currentSeq;
     int expectedAck;
     int bytesReceived;
     int fileLength; //Given by server during handshake
     
     
     void sendSyn(std::string filename);
-    void receiveSynAck();
+    bool receiveSynAck();
     void sendAck(int seqNum, int ackNum);
     
     //Check it's what we're expecting and if so write to file
     //Update bytesReceived
     void receiveData();
+    bool badPacketProb(double lostProbability);
     
     void writeTofile(std::string data);
     UDPCommunicator communicator;
     
-    //std::string filename; //temporarily public instead of private
-
+    Timer timeout;
+    double timeoutInterval;
     
 private:
     std::string filename;
-    double timerWindow;
-    int windowSize;
+  
     
     
 };
