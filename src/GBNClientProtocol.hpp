@@ -26,6 +26,7 @@ public:
     double corruptionProbability;
     double lostProbability;
     int currentSeq;
+    int expectedSeq;
     int expectedAck;
     int bytesReceived;
     int fileLength; //Given by server during handshake

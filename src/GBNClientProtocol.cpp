@@ -27,6 +27,7 @@ GBNClientProtocol::GBNClientProtocol(double TOInterval, string ip, int port, str
     currentSeq = 0;
     filename = fname;
     timeoutInterval = TOInterval;
+    expectedSeq = 0;
 }
 
 void GBNClientProtocol::sendSyn(std::string filename)
@@ -70,15 +71,15 @@ void GBNClientProtocol::receiveData()
     char* message = communicator.receive();
     Header * header = ((Header *) message);
     
-    if(header->ackNum == expectedAck && !badPacketProb(lostProbability) && !badPacketProb(corruptionProbability))
+    if(header->seqNum == expectedSeq && !badPacketProb(lostProbability) && !badPacketProb(corruptionProbability))
     {
         writeTofile(header->data);
-        expectedAck++;
+        expectedSeq++;
         bytesReceived += header->dataSize;
 
     }
     
-    sendAck(currentSeq, expectedAck);
+    sendAck(currentSeq, expectedSeq);
     
 }
 
