@@ -29,7 +29,7 @@ int main(int argc, const char ** argv){
     }
     
     std::string ip = "127.0.0.1";
-    int port = 4500;
+    int port = 45000;
     bool printSent = false;
     bool printReceived = false;
     
