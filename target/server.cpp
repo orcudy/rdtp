@@ -32,7 +32,7 @@ int main(int argc, const char ** argv){
     bool printSent = false;
     bool printReceived = false;
     int windowSize = 10;
-    int timeoutInterval = 1;
+    int timeoutInterval = 5;
     for (int index = 0; index < argc; index++){
         //indicate port number
         if (strcmp(argv[index], "-p") == 0){

@@ -86,9 +86,13 @@ void GBNClientProtocol::receiveData()
 void GBNClientProtocol::writeTofile(std::string data)
 {
     ofstream outputFile;
-    outputFile.open(filename, ios::app);
-    outputFile << data;
     
+    cout << "printing the data: "<< data << endl << endl;
+    
+    //outputFile.open(filename, ios::app);
+    outputFile.open("/Users/chloedrazen/Desktop/chrisisapoop.txt", ios::app | ios::out);
+    outputFile << data;
+    outputFile.close();
 }
 
 //Returns true is packet is lost, false otherwise

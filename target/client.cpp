@@ -19,9 +19,13 @@
 
 using namespace std;
 
+pthread_mutex_t timerLock;
+
 void * receiveSynAck(void * aclient);
 
+
 int main(int argc, const char ** argv){
+
     
     // !! begin command line argument parsing !!
     if (argc > 17){
@@ -114,6 +118,7 @@ int main(int argc, const char ** argv){
         }
     }
     // !! end command line argument parsing !!
+    
     if(filename == "")
     {
         Error::usage();
@@ -143,7 +148,12 @@ int main(int argc, const char ** argv){
         if(client.timeout.elapsedTime() >= client.timeoutInterval)
         {
             client.sendSyn(filename);
+            pthread_mutex_lock(&timerLock);
+            if (!client.timeout.timing){
+                break;
+            }
             client.timeout.start();
+            pthread_mutex_unlock(&timerLock);
         }
     }
     
@@ -170,7 +180,9 @@ void * receiveSynAck(void * aclient)
 {
     GBNClientProtocol * client = (GBNClientProtocol*)aclient;
     while(!client->receiveSynAck());
+    pthread_mutex_lock(&timerLock);
     client->timeout.stop();
+    pthread_mutex_unlock(&timerLock);
     
     return NULL;
 }
