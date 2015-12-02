@@ -54,8 +54,6 @@ bool GBNServerProtocol::receivedSyn(){
 void GBNServerProtocol::sendSynack(int seqNum, int ackNum){
   Header responseHeader = Header();
   responseHeader.fileSize = (int)this->fileSplitter.fileSize;
-  responseHeader.ackNum = ackNum;
-  responseHeader.seqNum = seqNum;
   responseHeader.synack = true;
   communicator.send(responseHeader.generateMessage());
 }

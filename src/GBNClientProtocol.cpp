@@ -34,12 +34,8 @@ void GBNClientProtocol::sendSyn(std::string filename)
 {
     Header header = Header();
     header.syn = true;
-    header.seqNum = currentSeq; 
     strncpy(header.filename, filename.c_str(), filename.length());
-    //filename = header.filename; //wrong?
-    
     communicator.send(header.generateMessage());
-    
 }
 
 void GBNClientProtocol::sendAck(int seqNum, int ackNum){
@@ -58,7 +54,7 @@ bool GBNClientProtocol::receiveSynAck()
     if(!header->synack)
         return false;
     
-    fileLength = header->fileSize; //Check this?!
+    fileLength = header->fileSize;
     
     return true;
     
@@ -86,11 +82,9 @@ void GBNClientProtocol::receiveData()
 void GBNClientProtocol::writeTofile(std::string data)
 {
     ofstream outputFile;
-    
-    cout << "printing the data: "<< data << endl << endl;
-    
+        
     //outputFile.open(filename, ios::app);
-    outputFile.open("/Users/chloedrazen/Desktop/chrisisapoop.txt", ios::app | ios::out);
+    outputFile.open("/Users/orcudy/Desktop/chloeisapoop.txt", ios::app | ios::out);
     outputFile << data;
     outputFile.close();
 }
