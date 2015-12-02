@@ -22,12 +22,12 @@ using namespace std;
 pthread_mutex_t timerLock;
 
 void * receiveSynAck(void * aclient);
-
+void * receiveFin(void * aclient);
 
 int main(int argc, const char ** argv){
   
+// !! Begin Command Line Argument Parsing !!
   
-  // !! begin command line argument parsing !!
   if (argc > 17){
     Error::usage();
   }
@@ -114,7 +114,8 @@ int main(int argc, const char ** argv){
       verbose = true;
     }
   }
-  // !! end command line argument parsing !!
+  
+// !! Begin Client Initialization !!
   
   if(filename == "")
   {
@@ -127,7 +128,8 @@ int main(int argc, const char ** argv){
   client.communicator.sendLog = printSent;
   client.verbose = verbose;
   
-  // !! Begin handshake !!
+// !! Begin Handshake !!
+  
   if (verbose){
     cout << "Sending syn for file " << filename << endl;
   }
@@ -169,7 +171,8 @@ int main(int argc, const char ** argv){
     exit(1);
   }
   
-  // !! Begin Data Receipt !!
+// !! Begin Data Receipt !!
+  
   while(client.bytesReceived < client.fileLength)
   {
     client.receiveData();
@@ -178,6 +181,41 @@ int main(int argc, const char ** argv){
     }
   }
   
+// !! Begin End Transmission Protocol !!
+
+  
+  if (client.verbose){
+    cout << "Data transmission complete." << endl;
+    cout << "Sending fin." << endl;
+  }
+  
+  //send initial fin
+  client.sendFin();
+  client.timeout.start();
+  
+  //resend fin on timeout, for up to 10 * timeoutInterval
+  int finCounter = 0;
+  while(finCounter < 10 && client.timeout.timing)
+  {
+    if(client.timeout.elapsedTime() >= client.timeoutInterval)
+    {
+      pthread_mutex_lock(&timerLock);
+      if (!client.timeout.timing){
+        if (client.verbose){
+          cout << "Breaking out of fin timeout loop." << endl;
+        }
+        break;
+      }
+      if (client.verbose){
+        cout << "Timed out! Resending fin." << endl;
+      }
+      client.sendFin();
+      client.timeout.start();
+      pthread_mutex_unlock(&timerLock);
+      ++finCounter;
+    }
+  }
+
   return 0;
 }
 
@@ -192,5 +230,11 @@ void * receiveSynAck(void * aclient)
   client->timeout.stop();
   pthread_mutex_unlock(&timerLock);
   
+  return NULL;
+}
+
+void * receiveFin(void * aclient){
+  GBNClientProtocol * client = (GBNClientProtocol*)aclient;
+  while(!client->receiveFin());
   return NULL;
 }

@@ -16,6 +16,7 @@ using namespace std;
 Header::Header(){
   syn = false;
   synack = false;
+  fin = false;
   ackNum = -1;
   seqNum = -1;
   dataSize = -1;
@@ -43,6 +44,7 @@ char * Header::generateMessage(){
 void Header::description(){
   cout << "syn: " << syn << endl;
   cout << "synack: " << synack << endl;
+  cout << "fin: " << fin << endl;
   cout << "ackNum: " << ackNum << endl;
   cout << "seqNum: " << seqNum << endl;
   cout << "dataSize: " << dataSize << endl;

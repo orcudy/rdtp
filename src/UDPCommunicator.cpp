@@ -10,6 +10,8 @@
 #include "Header.hpp"
 #include "Error.hpp"
 #include <iostream>
+#include <sys/time.h>
+
 
 using namespace std;
 
@@ -37,7 +39,9 @@ int UDPCommunicator::send(char * message){
     Error::exit(1);
   }
   if (sendLog){
-    cout << "Sent Data" << endl;
+    struct timeval now;
+    gettimeofday(&now, NULL);
+    cout << "Sent Data: " << now.tv_sec << " " << now.tv_usec << endl;
     Header * header = ((Header*)message);
     header->description();
     cout << endl;
@@ -51,7 +55,9 @@ char * UDPCommunicator::receive(){
     Error::exit(1);
   }
   if (receieveLog){
-    cout << "Received Data" << endl;
+    struct timeval now;
+    gettimeofday(&now, NULL);
+    cout << "Received Data: " << now.tv_sec << " " << now.tv_usec << endl;
     Header * header = ((Header*)this->receiveBuffer);
     header->description();
     cout << endl;

@@ -33,6 +33,8 @@ public:
   
   
   void sendSyn(std::string filename);
+  void sendFin();
+  bool receiveFin();
   bool receiveSynAck();
   void sendAck(int seqNum, int ackNum);
   

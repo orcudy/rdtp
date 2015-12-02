@@ -50,8 +50,11 @@ public:
   GBNServerProtocol(int windowSize, double timeoutInterval, int port);
   
   // 3-way handshake
+  bool keepAlive;
   bool receivedSyn();
-  void sendSynack(int seqNum, int ackNum);
+  void sendSynack();
+//  bool receiveFin();
+//  void sendFin();
 
   //data transfer
   bool receivedAck();

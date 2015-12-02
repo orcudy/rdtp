@@ -34,6 +34,7 @@ GBNServerProtocol::GBNServerProtocol(int windowSize, double timeoutInterval, int
   this->expectedAckNum = 0;
   
   this->verbose = false;
+  this->keepAlive = true;
 }
 
 // 3-way handshake
@@ -51,17 +52,38 @@ bool GBNServerProtocol::receivedSyn(){
   return false;
 }
 
-void GBNServerProtocol::sendSynack(int seqNum, int ackNum){
+void GBNServerProtocol::sendSynack(){
   Header responseHeader = Header();
   responseHeader.fileSize = (int)this->fileSplitter.fileSize;
   responseHeader.synack = true;
   communicator.send(responseHeader.generateMessage());
 }
 
+//void GBNServerProtocol::sendFin(){
+//  Header header = Header();
+//  header.fin = true;
+//  communicator.send(header.generateMessage());
+//}
+//
+//bool GBNServerProtocol::receiveFin(){
+//  char* message = communicator.receive();
+//  Header * header = ((Header *) message);
+//  if(header->fin){
+//    return true;
+//  }
+//  return false;
+//}
+
 //data transfer
 bool GBNServerProtocol::receivedAck(){
   char * message = communicator.receive();
   Header * receivedHeader = ((Header *) message);
+
+  //check if fin bit set
+  if (receivedHeader->fin){
+    this->keepAlive = false;
+  }
+  
   if (receivedHeader->ackNum >= this->currentWindowBase){
     this->receivedAckNum = receivedHeader->ackNum;
     return true;

@@ -38,6 +38,22 @@ void GBNClientProtocol::sendSyn(std::string filename)
     communicator.send(header.generateMessage());
 }
 
+void GBNClientProtocol::sendFin()
+{
+  Header header = Header();
+  header.fin = true;
+  communicator.send(header.generateMessage());
+}
+
+bool GBNClientProtocol::receiveFin(){
+  char* message = communicator.receive();
+  Header * header = ((Header *) message);
+  if(header->fin){
+    return true;
+  }
+  return false;
+}
+
 void GBNClientProtocol::sendAck(int seqNum, int ackNum){
     Header header = Header();
     header.ackNum = ackNum;

@@ -16,6 +16,7 @@ class Header {
 public:
   bool syn;
   bool synack;
+  bool fin;
   int ackNum;
   int seqNum;
   int dataSize;
