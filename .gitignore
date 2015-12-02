@@ -18,4 +18,4 @@ bin/*
 *.xcuserdata
 xcuserdata/
 */xcuserdata/
-
+rdt.xcodeproj/project.xcworkspace/xcshareddata/
