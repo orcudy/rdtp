@@ -59,21 +59,6 @@ void GBNServerProtocol::sendSynack(){
   communicator.send(responseHeader.generateMessage());
 }
 
-//void GBNServerProtocol::sendFin(){
-//  Header header = Header();
-//  header.fin = true;
-//  communicator.send(header.generateMessage());
-//}
-//
-//bool GBNServerProtocol::receiveFin(){
-//  char* message = communicator.receive();
-//  Header * header = ((Header *) message);
-//  if(header->fin){
-//    return true;
-//  }
-//  return false;
-//}
-
 //data transfer
 bool GBNServerProtocol::receivedAck(){
   char * message = communicator.receive();

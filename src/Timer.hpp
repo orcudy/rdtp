@@ -16,11 +16,15 @@ class Timer {
   timeval startTime;
   
 public:
+  Timer();
+  
   bool timing;
+  bool valid;
 
   void start();
   void stop();
   float elapsedTime();
+  
   
 };
 

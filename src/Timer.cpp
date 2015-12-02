@@ -10,6 +10,11 @@
 #include <stdlib.h>
 #include "Timer.hpp"
 
+
+Timer::Timer(){
+  valid = true;
+}
+
 void Timer::start(){
   timing = true;
   gettimeofday(&startTime, NULL);

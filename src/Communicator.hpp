@@ -19,8 +19,8 @@ public:
   Socket socket;
   
   //print output/input
-  bool receieveLog;
-  bool sendLog;
+  bool printReceieved;
+  bool printSent;
   
   //instance properties
   int receiveBufferSize;

@@ -6,7 +6,6 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-
 #include "Error.hpp"
 #include "Header.hpp"
 #include "Socket.hpp"
@@ -18,8 +17,6 @@
 #include <pthread.h>
 
 using namespace std;
-
-pthread_mutex_t timerLock;
 
 void * receiveSynAck(void * aclient);
 void * receiveFin(void * aclient);
@@ -115,17 +112,16 @@ int main(int argc, const char ** argv){
     }
   }
   
-// !! Begin Client Initialization !!
-  
-  if(filename == "")
-  {
+  if(filename == ""){
     Error::usage();
     Error::exit(-1);
   }
   
+// !! Begin Client Initialization !!
+
   GBNClientProtocol client = GBNClientProtocol(timeoutInterval, ip, port, filename, lostProb, corrProb);
-  client.communicator.receieveLog = printReceived;
-  client.communicator.sendLog = printSent;
+  client.communicator.printReceieved = printReceived;
+  client.communicator.printSent = printSent;
   client.verbose = verbose;
   
 // !! Begin Handshake !!
@@ -138,43 +134,30 @@ int main(int argc, const char ** argv){
   
   //wait for synack
   pthread_t receiveThread;
-  if(pthread_create(&receiveThread, NULL, receiveSynAck, &client))
-  {
+  if(pthread_create(&receiveThread, NULL, receiveSynAck, &client)){
     cout<< "Error creating thread" << endl;
     exit(1);
   }
   
-  while(client.timeout.timing)
-  {
-    if(client.timeout.elapsedTime() >= client.timeoutInterval)
-    {
-      pthread_mutex_lock(&timerLock);
-      if (!client.timeout.timing){
-        if (client.verbose){
-          cout << "Breaking out of timeout loop." << endl;
-        }
-        break;
-      }
+  while(client.timeout.valid){
+    if(client.timeout.elapsedTime() >= client.timeoutInterval){
       if (client.verbose){
         cout << "Timed out! Resending syn." << endl;
       }
       client.sendSyn(filename);
       client.timeout.start();
-      pthread_mutex_unlock(&timerLock);
     }
   }
   
   //join thread when synack received
-  if(pthread_join(receiveThread, NULL))
-  {
+  if(pthread_join(receiveThread, NULL)){
     cout<< "Error joining thread" << endl;
     exit(1);
   }
   
 // !! Begin Data Receipt !!
   
-  while(client.bytesReceived < client.fileLength)
-  {
+  while(client.bytesReceived < client.fileLength){
     client.receiveData();
     if (client.verbose){
       cout << "Received data . Bytes received: " << client.bytesReceived << " of " << client.fileLength << endl;
@@ -183,35 +166,26 @@ int main(int argc, const char ** argv){
   
 // !! Begin End Transmission Protocol !!
 
-  
   if (client.verbose){
     cout << "Data transmission complete." << endl;
     cout << "Sending fin." << endl;
   }
   
   //send initial fin
-  client.sendFin();
+  client.timeout.valid = true;
   client.timeout.start();
+  client.sendFin();
+
   
   //resend fin on timeout, for up to 10 * timeoutInterval
   int finCounter = 0;
-  while(finCounter < 10 && client.timeout.timing)
-  {
-    if(client.timeout.elapsedTime() >= client.timeoutInterval)
-    {
-      pthread_mutex_lock(&timerLock);
-      if (!client.timeout.timing){
-        if (client.verbose){
-          cout << "Breaking out of fin timeout loop." << endl;
-        }
-        break;
-      }
+  while(finCounter < 10 && client.timeout.valid){
+    if (client.timeout.elapsedTime() >= client.timeoutInterval){
       if (client.verbose){
         cout << "Timed out! Resending fin." << endl;
       }
       client.sendFin();
       client.timeout.start();
-      pthread_mutex_unlock(&timerLock);
       ++finCounter;
     }
   }
@@ -219,22 +193,20 @@ int main(int argc, const char ** argv){
   return 0;
 }
 
-void * receiveSynAck(void * aclient)
-{
+void * receiveSynAck(void * aclient){
   GBNClientProtocol * client = (GBNClientProtocol*)aclient;
   while(!client->receiveSynAck());
   if (client->verbose){
     cout << "Received synack." << endl;
   }
-  pthread_mutex_lock(&timerLock);
   client->timeout.stop();
-  pthread_mutex_unlock(&timerLock);
-  
+  client->timeout.valid = false;
   return NULL;
 }
 
 void * receiveFin(void * aclient){
   GBNClientProtocol * client = (GBNClientProtocol*)aclient;
   while(!client->receiveFin());
+  client->timeout.valid = false;
   return NULL;
 }

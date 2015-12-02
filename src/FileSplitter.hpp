@@ -2,12 +2,12 @@
 //  FileSplitter.hpp
 //  rdt
 //
-//  Created by Chris Orcutt on 11/14/15.
-//  Copyright © 2015 Chris Orcutt. All rights reserved.
+//  Created by Chloe Drazen on 11/14/15.
+//  Copyright © 2015 Chloe Drazen. All rights reserved.
 //
 
-#ifndef COFileSplitter
-#define COFileSplitter
+#ifndef CDFileSplitter
+#define CDFileSplitter
 
 #include <stdio.h>
 #include <string>

@@ -38,7 +38,7 @@ int UDPCommunicator::send(char * message){
     cout << "Error sending data: " << strerror(errno) << endl;
     Error::exit(1);
   }
-  if (sendLog){
+  if (printSent){
     struct timeval now;
     gettimeofday(&now, NULL);
     cout << "Sent Data: " << now.tv_sec << " " << now.tv_usec << endl;
@@ -54,7 +54,7 @@ char * UDPCommunicator::receive(){
     cout << "Error receiving data: " << strerror(errno) << endl;
     Error::exit(1);
   }
-  if (receieveLog){
+  if (printReceieved){
     struct timeval now;
     gettimeofday(&now, NULL);
     cout << "Received Data: " << now.tv_sec << " " << now.tv_usec << endl;

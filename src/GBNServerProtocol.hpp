@@ -6,8 +6,8 @@
 //  Copyright © 2015 Chris Orcutt. All rights reserved.
 //
 
-#ifndef GBNServerProtocol_h
-#define GBNServerProtocol_h
+#ifndef COGBNServerProtocol
+#define COGBNServerProtocol
 
 #include <stdio.h>
 #include "UDPCommunicator.hpp"
@@ -53,8 +53,6 @@ public:
   bool keepAlive;
   bool receivedSyn();
   void sendSynack();
-//  bool receiveFin();
-//  void sendFin();
 
   //data transfer
   bool receivedAck();

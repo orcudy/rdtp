@@ -17,13 +17,13 @@
 using namespace std;
 
 void * receiveAck(void *);
-//void * receiveFin(void *);
 void sendValidPackets(GBNServerProtocol *);
 void sendSynack(GBNServerProtocol *);
 
 int main(int argc, const char ** argv){
   
-  // !! begin command line argument parsing !!
+// !! Begin Command Line Argument Parsing !!
+  
   if (argc > 10){
     Error::usage();
   }
@@ -82,14 +82,15 @@ int main(int argc, const char ** argv){
       verbose = true;
     }
   }
-  // !! end command line argument parsing !!
+  
+// !! Begin GBN Server Initialization  !!
   
   GBNServerProtocol server = GBNServerProtocol(windowSize, timeoutInterval, port);
-  server.communicator.receieveLog = printReceived;
-  server.communicator.sendLog = printSent;
+  server.communicator.printReceieved = printReceived;
+  server.communicator.printSent = printSent;
   server.verbose = verbose;
   
-  // !! Begin Handshake !!
+// !! Begin Handshake !!
   
   if (server.verbose){
     cout << "Waiting for connection on port " << server.communicator.socket.port << "." << endl;
@@ -98,23 +99,19 @@ int main(int argc, const char ** argv){
   //waiting for client to request connection
   while (!server.receivedSyn());
   if (server.verbose){
-    cout << "Received Syn." << endl;
-  }
-  
-  if (server.verbose){
-    cout << "Sending synack." <<  endl;
+    cout << "Received Syn. Sending Synack." << endl;
   }
   sendSynack(&server);
   
   //wait for synack ack
-  pthread_t receiveThread;
-  if (pthread_create(&receiveThread, NULL, receiveAck, &server)) {
-    cout << "Error creating thread." << endl;
+  pthread_t receiveAckThread;
+  if (pthread_create(&receiveAckThread, NULL, receiveAck, &server)) {
+    cout << "Error creating ack thread." << endl;
     exit(1);
   }
   
   //resend synack at timeout
-  while (server.timeoutTimer.timing){
+  while (server.timeoutTimer.valid){
     if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
       if (server.verbose){
         cout << "Timed out! Resending synack." << endl;
@@ -124,42 +121,29 @@ int main(int argc, const char ** argv){
   }
   
   //join thread when ack received
-  if (pthread_join(receiveThread, NULL)) {
-    cout << "Error joining thread" << endl;
+  if (pthread_join(receiveAckThread, NULL)) {
+    cout << "Error joining ack thread" << endl;
     exit(1);
   }
   
-  // !! Begin Data Transmission !!
+// !! Begin Data Transmission !!
   
-//  //wait for fin
-//  pthread_t finThread;
-//  if (pthread_create(&finThread, NULL, receiveFin, &server)) {
-//    cout << "Error creating fin thread" << endl;
-//    exit(1);
-//  }
-  
-  //continually send data
-  while (server.currentWindowBase < server.totalChunks ){
-    if (!server.keepAlive) {
-      return 0;
-    }
-    
+  //send data
+  while (server.keepAlive && server.currentWindowBase < server.totalChunks ){
     if (server.verbose){
       cout << "Current window base: " << server.currentWindowBase << ", Total chunks: " << server.totalChunks << endl;
     }
+    server.timeoutTimer.valid = true;
     sendValidPackets(&server);
     
     //wait for ack
-    if (pthread_create(&receiveThread, NULL, receiveAck, &server)) {
-      cout << "Error creating receive thread" << endl;
+    if (pthread_create(&receiveAckThread, NULL, receiveAck, &server)) {
+      cout << "Error creating ack thread" << endl;
       exit(1);
     }
     
     //resend data at timeout
-    while (server.timeoutTimer.timing){
-      if (!server.keepAlive){
-        return 0;
-      }
+    while (server.keepAlive && server.timeoutTimer.valid){
       if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
         if (server.verbose){
           cout << "Timed out! Resending packets " << server.currentWindowBase << " to " << server.currentWindowBase + server.windowSize << endl;
@@ -168,20 +152,16 @@ int main(int argc, const char ** argv){
       }
     }
     
+    if (!server.keepAlive){
+      return 0;
+    }
+    
     //join thread when ack received
-    if (pthread_join(receiveThread, NULL)) {
+    if (pthread_join(receiveAckThread, NULL)) {
       cout << "Error joining receive thread" << endl;
       exit(1);
     }
   }
-  
-//  //join thread when fin received
-//  if (pthread_join(finThread, NULL)) {
-//    cout << "Error joining fin thread" << endl;
-//    exit(1);
-//  } else {
-//    return 0;
-//  }
   
   return 0;
 }
@@ -195,16 +175,9 @@ void * receiveAck(void * aserver){
   }
   server->currentWindowBase = server->receivedAckNum;
   server->timeoutTimer.stop();
+  server->timeoutTimer.valid = false;
   return NULL;
 }
-
-////receive fin in new thread
-//void * receiveFin(void * aserver){
-//  GBNServerProtocol * server = (GBNServerProtocol*)aserver;
-//  while(!server->receiveFin());
-//  server->sendFin();
-//  return NULL;
-//}
 
 //sends all packets in current window
 void sendValidPackets(GBNServerProtocol * server){
@@ -213,16 +186,16 @@ void sendValidPackets(GBNServerProtocol * server){
       if (server->verbose){
         cout << "Sending packet number " << packetNum + 1 << " of " << server->totalChunks << endl;
       }
-      server->sendData(packetNum);
       server->timeoutTimer.start();
+      server->sendData(packetNum);
     }
   }
 }
 
 //sends synack
 void sendSynack(GBNServerProtocol * server){
-  server->sendSynack();
   server->timeoutTimer.start();
+  server->sendSynack();
 }
 
 
