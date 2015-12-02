@@ -16,6 +16,7 @@ bin/*
 *.perspectivev3
 *.pbxuser
 *.xcuserdata
+*.xcuserstate
 xcuserdata/
 */xcuserdata/
 rdt.xcodeproj/project.xcworkspace/xcshareddata/
