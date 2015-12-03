@@ -25,7 +25,7 @@ int main(int argc, const char ** argv){
   
 // !! Begin Command Line Argument Parsing !!
   
-  if (argc > 10){
+  if (argc > 9){
     Error::usage();
   }
   
@@ -36,7 +36,7 @@ int main(int argc, const char ** argv){
   int windowSize = 10;
   int timeoutInterval = 2;
   
-  for (int index = 0; index < argc; index++){
+  for (int index = 1; index < argc; index++){
 
     //indicate port number
     if (strcmp(argv[index], "--port") == 0 || strcmp(argv[index], "-p") == 0){
@@ -44,43 +44,49 @@ int main(int argc, const char ** argv){
         Error::usage();
       }
       port = atoi(argv[index + 1]);
+      index++;
     }
     
     //indicate window size
-    if (strcmp(argv[index], "--window") == 0 || strcmp(argv[index], "-w") == 0){
+    else if (strcmp(argv[index], "--window") == 0 || strcmp(argv[index], "-w") == 0){
       if (index + 1 == argc) {
         Error::usage();
       }
       windowSize = atoi(argv[index + 1]);
+      index++;
     }
     
     //indicate timeout interval
-    if (strcmp(argv[index], "--timeout") == 0 || strcmp(argv[index], "-t") == 0){
+    else if (strcmp(argv[index], "--timeout") == 0 || strcmp(argv[index], "-t") == 0){
       if (index + 1 == argc) {
         Error::usage();
       }
       timeoutInterval = atoi(argv[index + 1]);
+      index++;
     }
     
     //print all sent data
-    if (strcmp(argv[index], "--print-sent") == 0 || strcmp(argv[index], "-ps") == 0){
+    else if (strcmp(argv[index], "--print-sent") == 0 || strcmp(argv[index], "-ps") == 0){
       printSent = true;
     }
     
     //print all received data
-    if (strcmp(argv[index], "--print-recv") == 0 || strcmp(argv[index], "-pr") == 0){
+    else if (strcmp(argv[index], "--print-recv") == 0 || strcmp(argv[index], "-pr") == 0){
       printReceived = true;
     }
     
     //print all data
-    if (strcmp(argv[index], "--print-all") == 0 || strcmp(argv[index], "-pa") == 0){
+    else if (strcmp(argv[index], "--print-all") == 0 || strcmp(argv[index], "-pa") == 0){
       printReceived = true;
       printSent = true;
     }
     
     //print server protocol
-    if (strcmp(argv[index], "--verbose") == 0 || strcmp(argv[index], "-v") == 0){
+    else if (strcmp(argv[index], "--verbose") == 0 || strcmp(argv[index], "-v") == 0){
       verbose = true;
+    }else {
+      Error::usage();
+      Error::exit(-1);
     }
   }
   
@@ -106,8 +112,8 @@ int main(int argc, const char ** argv){
   sendSynack(&server);
   
   //wait for synack ack
-  pthread_t receiveAckThread;
-  if (pthread_create(&receiveAckThread, NULL, receiveAck, &server)) {
+  pthread_t receiveSynackThread;
+  if (pthread_create(&receiveSynackThread, NULL, receiveAck, &server)) {
     cout << "Error creating ack thread." << endl;
     exit(1);
   }
@@ -124,7 +130,7 @@ int main(int argc, const char ** argv){
   }
   
   //join thread when ack received
-  if (pthread_join(receiveAckThread, NULL)) {
+  if (pthread_join(receiveSynackThread, NULL)) {
     cout << "Error joining ack thread" << endl;
     exit(1);
   }
@@ -132,14 +138,16 @@ int main(int argc, const char ** argv){
 // !! Begin Data Transmission !!
   
   //send data
-  while (server.keepAlive && server.currentWindowBase < server.totalChunks ){
+  while (server.keepAlive && (server.currentWindowBase < server.totalChunks) ){
     if (server.verbose){
-      cout << "Current window base: " << server.currentWindowBase << ", Total packets: " << server.totalChunks << endl << endl;
+      cout << "Current window base: " << server.currentWindowBase << ", Total packets: " << server.totalChunks << endl;
     }
     server.timeoutTimer.valid = true;
     sendValidPackets(&server);
     
+
     //wait for ack
+    pthread_t receiveAckThread;
     if (pthread_create(&receiveAckThread, NULL, receiveAck, &server)) {
       cout << "Error creating ack thread" << endl;
       exit(1);
@@ -147,6 +155,9 @@ int main(int argc, const char ** argv){
     
     //resend data at timeout
     while (server.keepAlive && server.timeoutTimer.valid){
+      if (!server.timeoutTimer.timing){
+        server.timeoutTimer.start();
+      }
       if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
         if (server.verbose){
           cout << "Timed out!" << endl << "Resending packets " << server.currentWindowBase << " to " << server.currentWindowBase + server.windowSize - 1 << endl;
@@ -165,7 +176,6 @@ int main(int argc, const char ** argv){
       exit(1);
     }
   }
-  
   return 0;
 }
 
@@ -174,7 +184,7 @@ void * receiveAck(void * aserver){
   GBNServerProtocol * server = (GBNServerProtocol*)aserver;
   while(!server->receivedAck());
   if (server->verbose){
-    cout << "Received: Ack " << server->receivedAckNum <<  endl << endl;
+    cout << "Received: Ack " << server->receivedAckNum << endl;
   }
   server->currentWindowBase = server->receivedAckNum;
   server->timeoutTimer.stop();
