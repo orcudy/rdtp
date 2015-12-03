@@ -23,6 +23,7 @@ GBNServerProtocol::GBNServerProtocol(int windowSize, double timeoutInterval, int
   
   this->currentWindowBase = 0;
   this->windowSize = windowSize;
+  this->lowestAckedPacket = -1;
   
   this->chunkSize = -1;
   this->fileData = NULL;
@@ -35,6 +36,8 @@ GBNServerProtocol::GBNServerProtocol(int windowSize, double timeoutInterval, int
   
   this->verbose = false;
   this->keepAlive = true;
+  
+  this->packetState = (PacketState*)malloc(sizeof(PacketState) * this->totalChunks);
 }
 
 // 3-way handshake
@@ -47,6 +50,11 @@ bool GBNServerProtocol::receivedSyn(){
     this->fileSplitter = FileSplitter(requestHeader->filename, this->chunkSize);
     this->fileData = this->fileSplitter.split();
     this->totalChunks = ceil(fileSplitter.fileSize / (double)chunkSize);
+    
+    for (int index = 0; index < this->totalChunks; index++) {
+      this->packetState[index] = Unsent;
+    }
+    
     return true;
   }
   return false;
@@ -59,6 +67,7 @@ void GBNServerProtocol::sendSynack(){
   communicator.send(responseHeader.generateMessage());
 }
 
+
 //data transfer
 bool GBNServerProtocol::receivedAck(){
   char * message = communicator.receive();
@@ -69,8 +78,9 @@ bool GBNServerProtocol::receivedAck(){
     this->keepAlive = false;
   }
   
-  if (receivedHeader->ackNum >= this->currentWindowBase){
+  if (receivedHeader->ackNum > this->lowestAckedPacket){
     this->receivedAckNum = receivedHeader->ackNum;
+    this->lowestAckedPacket = this->receivedAckNum;
     return true;
   }
   return false;
