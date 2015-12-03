@@ -15,11 +15,16 @@
 #include "Timer.hpp"
 
 
-class GBNServerProtocol{
+enum PacketState {
+  Unsent,
+  Sent,
+  Acked
+};
 
+class GBNServerProtocol{
 public:
   UDPCommunicator communicator;
-
+  
   //timers
   Timer timeoutTimer;
   float timeoutInterval;
@@ -27,11 +32,13 @@ public:
   //window
   int currentWindowBase;
   int windowSize;
+  int lowestAckedPacket;
   
   //data
   int chunkSize;
   char ** fileData;
   int totalChunks;
+  PacketState * packetState;
   
   //incoming headers
   int receivedAckNum;
@@ -53,7 +60,7 @@ public:
   bool keepAlive;
   bool receivedSyn();
   void sendSynack();
-
+  
   //data transfer
   bool receivedAck();
   void sendData(int packetNum);

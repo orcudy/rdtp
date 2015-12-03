@@ -35,10 +35,10 @@ int main(int argc, const char ** argv){
   bool printReceived = false;
   bool verbose = false;
   
-  double timeoutInterval = 2;
+  float timeoutInterval = 2;
   std::string filename = "";
-  double lostProb = 0;
-  double corrProb = 0;
+  float lostProb = 0;
+  float corrProb = 0;
   
   int index;
   for (index = 0; index < argc; index++){
@@ -71,7 +71,7 @@ int main(int argc, const char ** argv){
       if (index + 1 == argc) {
         Error::usage();
       }
-      lostProb = atoi(argv[index + 1]);
+      lostProb = atof(argv[index + 1]);
     }
     
     //indicate probability of packet being corrupted
@@ -79,7 +79,7 @@ int main(int argc, const char ** argv){
       if (index + 1 == argc) {
         Error::usage();
       }
-      corrProb = atoi(argv[index + 1]);
+      corrProb = atof(argv[index + 1]);
     }
     
     //indicate timeout interval
@@ -87,7 +87,7 @@ int main(int argc, const char ** argv){
       if (index + 1 == argc) {
         Error::usage();
       }
-      timeoutInterval = atoi(argv[index + 1]);
+      timeoutInterval = atof(argv[index + 1]);
     }
     
     //print all sent data
@@ -127,7 +127,7 @@ int main(int argc, const char ** argv){
 // !! Begin Handshake !!
   
   if (verbose){
-    cout << "Sending syn for file " << filename << endl;
+    cout << "Sent: Syn for file " << filename << endl;
   }
   client.sendSyn(filename);
   client.timeout.start();
@@ -159,16 +159,13 @@ int main(int argc, const char ** argv){
   
   while(client.bytesReceived < client.fileLength){
     client.receiveData();
-    if (client.verbose){
-      cout << "Received data . Bytes received: " << client.bytesReceived << " of " << client.fileLength << endl;
-    }
   }
   
 // !! Begin End Transmission Protocol !!
 
   if (client.verbose){
     cout << "Data transmission complete." << endl;
-    cout << "Sending fin." << endl;
+    cout << "Sent: Fin." << endl;
   }
   
   //send initial fin
@@ -197,7 +194,7 @@ void * receiveSynAck(void * aclient){
   GBNClientProtocol * client = (GBNClientProtocol*)aclient;
   while(!client->receiveSynAck());
   if (client->verbose){
-    cout << "Received synack." << endl;
+    cout << "Received: Synack." << endl;
   }
   client->timeout.stop();
   client->timeout.valid = false;

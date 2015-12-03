@@ -18,6 +18,7 @@ using namespace std;
 
 void * receiveAck(void *);
 void sendValidPackets(GBNServerProtocol *);
+void resendValidPackets(GBNServerProtocol *);
 void sendSynack(GBNServerProtocol *);
 
 int main(int argc, const char ** argv){
@@ -99,7 +100,8 @@ int main(int argc, const char ** argv){
   //waiting for client to request connection
   while (!server.receivedSyn());
   if (server.verbose){
-    cout << "Received Syn. Sending Synack." << endl;
+    cout << "Received: Syn." << endl;
+    cout << "Sent: Synack." << endl << endl;
   }
   sendSynack(&server);
   
@@ -114,7 +116,8 @@ int main(int argc, const char ** argv){
   while (server.timeoutTimer.valid){
     if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
       if (server.verbose){
-        cout << "Timed out! Resending synack." << endl;
+        cout << "Timed out!" << endl;
+        cout << "Sent: Synack." << endl << endl;
       }
       sendSynack(&server);
     }
@@ -131,7 +134,7 @@ int main(int argc, const char ** argv){
   //send data
   while (server.keepAlive && server.currentWindowBase < server.totalChunks ){
     if (server.verbose){
-      cout << "Current window base: " << server.currentWindowBase << ", Total chunks: " << server.totalChunks << endl;
+      cout << "Current window base: " << server.currentWindowBase << ", Total packets: " << server.totalChunks << endl << endl;
     }
     server.timeoutTimer.valid = true;
     sendValidPackets(&server);
@@ -146,9 +149,9 @@ int main(int argc, const char ** argv){
     while (server.keepAlive && server.timeoutTimer.valid){
       if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
         if (server.verbose){
-          cout << "Timed out! Resending packets " << server.currentWindowBase << " to " << server.currentWindowBase + server.windowSize << endl;
+          cout << "Timed out!" << endl << "Resending packets " << server.currentWindowBase << " to " << server.currentWindowBase + server.windowSize - 1 << endl;
         }
-        sendValidPackets(&server);
+        resendValidPackets(&server);
       }
     }
     
@@ -171,7 +174,7 @@ void * receiveAck(void * aserver){
   GBNServerProtocol * server = (GBNServerProtocol*)aserver;
   while(!server->receivedAck());
   if (server->verbose){
-    cout << "Received ack " << server->receivedAckNum << " with current window base at " << server->currentWindowBase << " with window size " << server->windowSize <<  endl;
+    cout << "Received: Ack " << server->receivedAckNum <<  endl << endl;
   }
   server->currentWindowBase = server->receivedAckNum;
   server->timeoutTimer.stop();
@@ -180,15 +183,35 @@ void * receiveAck(void * aserver){
 }
 
 //sends all packets in current window
-void sendValidPackets(GBNServerProtocol * server){
+void resendValidPackets(GBNServerProtocol * server){
   for (int packetNum = server->currentWindowBase; packetNum < server->currentWindowBase + server->windowSize; packetNum++){
     if (packetNum < server->totalChunks){
       if (server->verbose){
-        cout << "Sending packet number " << packetNum + 1 << " of " << server->totalChunks << endl;
+        cout << "Sent: Packet number " << packetNum << endl;
       }
       server->timeoutTimer.start();
       server->sendData(packetNum);
     }
+  }
+  if (server->verbose){
+    cout << endl;
+  }
+}
+
+//TODO: refactorable with resendValidPackets!
+void sendValidPackets(GBNServerProtocol * server){
+  for (int packetNum = server->currentWindowBase; packetNum < server->currentWindowBase + server->windowSize; packetNum++){
+    if (packetNum < server->totalChunks && server->packetState[packetNum] == Unsent){
+      if (server->verbose){
+        cout << "Sent: Packet number " << packetNum << endl;
+      }
+      server->packetState[packetNum] = Sent;
+      server->timeoutTimer.start();
+      server->sendData(packetNum);
+    }
+  }
+  if (server->verbose){
+    cout << endl;
   }
 }
 

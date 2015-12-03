@@ -31,7 +31,6 @@ public:
   int bytesReceived;
   int fileLength; //Given by server during handshake
   
-  
   void sendSyn(std::string filename);
   void sendFin();
   bool receiveFin();
