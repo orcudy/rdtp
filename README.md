@@ -2,27 +2,27 @@
 
 RDTP is an implementation of the Go-Back-N reliable data transfer protocol over UDP. The repository includes both sender (server) and receiver (client) programs. 
 
-The project was created for CS118 (Introduction to Computer Networks) at UCLA during the Fall of 2015. The project was created over the course of 4 weeks by Chris Orcutt and Chloe Drazen.
+The project was created in 4 weeks by Chris Orcutt and Chloe Drazen for CS118 (Introduction to Computer Networks) at UCLA during the Fall of 2015.
 
 For all inquiries, please contact Chris Orcutt at orcutt.chris@gmail.com.
 
-##Building
+###Building
 
 Build the client and server programs by navigating to the project directory and running the `make` utility. 
 
 This builds both a `client` and `server` executable. From the root directory of the project, the executables can be found in `bin/client` and `bin/server`.
 
-##Running
+###Running
 
-###Server 
+#####Server 
 
 The `server` program can be run with the following options:
 
 `[--port, -p] portno` -- sets the server port number to *portno*
 
-`[--timeout, -t] timeoutInterval` -- sets the server timeout interval for data retransmission
+`[--timeout, -t] timeoutInterval` -- sets the server timeout interval for data retransmission to *timeoutInterval*
 
-`[-window, -w] windowSize` -- sets the server window size for the Go-Back-N reliable  data transfer protocol
+`[-window, -w] windowSize` -- sets the server window size for the Go-Back-N reliable data transfer protocol to *windowSize*
 
 `[--verbose, -v]` -- prints protocol information to the console
 
@@ -34,21 +34,21 @@ The `server` program can be run with the following options:
 
 Without any options, running `server` defaults to port 45000 with a window size of 10 and timeout interval of 1 second.
 
-###Client 
+#####Client 
 
 The `client` program can be run with the following options:
 
-`[--filename, -f] filename` -- the filename that the client is requesting from the server
+`[--filename, -f] filename` -- sets the filename that the client is requesting from the server
 
-`[--ip-address, -ip] ipaddr` -- sets the IP address of the server with which the client wants to communicate. (Note: Both dot decimal and URL formats are supported.)
+`[--ip-address, -ip] ipaddress` -- sets the IP address of the server with which the client wants to communicate to *ipaddress*. (Note: Both dot decimal and URL formats are supported.)
 
-`[--port, -p] portno` -- sets the port number of the server with which the client wants to communicate
+`[--port, -p] portno` -- sets the port number of the server with which the client wants to communicate to *portno*
 
-`[--timeout, -t] timeoutInterval` -- sets the client timeout interval for data syn transmission
+`[--timeout, -t] timeoutInterval` -- sets the client timeout interval for data syn transmission to *timeoutInterval*
 
-`[-lost, -l] probabilityOfLoss` -- testing option used to simulate packet loss with given probability 
+`[-lost, -l] probabilityOfLoss` -- testing option used to simulate packet loss with probability *probabilityOfLoss*
 
-`[-corrupt, -c] probabilityOfCorruption` -- testing option used to simulate packet corruption with given probability 
+`[-corrupt, -c] probabilityOfCorruption` -- testing option used to simulate packet corruption with probability *probabilityOfCorruption*
 
 `[--verbose, -v]` -- prints protocol information to the console
 
