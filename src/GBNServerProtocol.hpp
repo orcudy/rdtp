@@ -37,7 +37,7 @@ public:
   //data
   int chunkSize;
   char ** fileData;
-  int totalChunks;
+  int totalPackets;
   PacketState * packetState;
   
   //incoming headers

@@ -11,7 +11,7 @@
 #include "Error.hpp"
 #include <iostream>
 #include <sys/time.h>
-
+#include <string.h>
 
 using namespace std;
 

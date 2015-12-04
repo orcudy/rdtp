@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Timer.hpp"
 #include <math.h>
+#include <string.h>
 
 using namespace std;
 
@@ -37,7 +38,7 @@ GBNServerProtocol::GBNServerProtocol(int windowSize, double timeoutInterval, int
   this->verbose = false;
   this->keepAlive = true;
   
-  this->packetState = (PacketState*)malloc(sizeof(PacketState) * this->totalChunks);
+  this->packetState = (PacketState*)malloc(sizeof(PacketState) * this->totalPackets);
 }
 
 // 3-way handshake
@@ -49,9 +50,9 @@ bool GBNServerProtocol::receivedSyn(){
     this->chunkSize = requestHeader->chunkSize;
     this->fileSplitter = FileSplitter(requestHeader->filename, this->chunkSize);
     this->fileData = this->fileSplitter.split();
-    this->totalChunks = ceil(fileSplitter.fileSize / (double)chunkSize);
+    this->totalPackets = ceil(fileSplitter.fileSize / (double)chunkSize);
     
-    for (int index = 0; index < this->totalChunks; index++) {
+    for (int index = 0; index < this->totalPackets; index++) {
       this->packetState[index] = Unsent;
     }
     
@@ -62,7 +63,7 @@ bool GBNServerProtocol::receivedSyn(){
 
 void GBNServerProtocol::sendSynack(){
   Header responseHeader = Header();
-  responseHeader.fileSize = (int)this->fileSplitter.fileSize;
+  responseHeader.totalPackets = totalPackets;
   responseHeader.synack = true;
   communicator.send(responseHeader.generateMessage());
 }

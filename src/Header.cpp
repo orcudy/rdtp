@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ Header::Header(){
   ackNum = -1;
   seqNum = -1;
   dataSize = -1;
-  fileSize = -1;
+  totalPackets = -1;
   memset(this->data, '\0', this->chunkSize);
   memset(this->filename, '\0', maxFilenameSize);
 
@@ -30,9 +31,9 @@ Header::Header(char * data){
   memcpy(this, data, sizeof(char) * sizeof(Header));
 }
 
-void Header::setData(char * data) {
-  memset(this->data, '\0', this->chunkSize);
-  memcpy(this->data, data, this->chunkSize);
+void Header::setData(char * adata) {
+  memset(this->data, 0, 1000);
+  memcpy(this->data, adata, strlen(adata));
 }
 
 char * Header::generateMessage(){
@@ -50,7 +51,7 @@ void Header::description(){
   cout << "dataSize: " << dataSize << endl;
   cout << "chunkSize: " << chunkSize << endl;
   printf("filename: %s\n", filename);
-  cout << "fileSize: " << fileSize << endl;
+  cout << "totalPackets: " << totalPackets << endl;
   printf("data: %s\n", data);
 }
 

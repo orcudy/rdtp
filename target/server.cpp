@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <pthread.h>
+#include <string.h>
 
 using namespace std;
 
@@ -22,20 +23,20 @@ void resendValidPackets(GBNServerProtocol *);
 void sendSynack(GBNServerProtocol *);
 
 int main(int argc, const char ** argv){
-  
+
 // !! Begin Command Line Argument Parsing !!
-  
+
   if (argc > 9){
     Error::usage();
   }
-  
+
   int port = 45000;
   bool verbose = false;
   bool printSent = false;
   bool printReceived = false;
   int windowSize = 10;
   int timeoutInterval = 2;
-  
+
   for (int index = 1; index < argc; index++){
 
     //indicate port number
@@ -46,7 +47,7 @@ int main(int argc, const char ** argv){
       port = atoi(argv[index + 1]);
       index++;
     }
-    
+
     //indicate window size
     else if (strcmp(argv[index], "--window") == 0 || strcmp(argv[index], "-w") == 0){
       if (index + 1 == argc) {
@@ -55,7 +56,7 @@ int main(int argc, const char ** argv){
       windowSize = atoi(argv[index + 1]);
       index++;
     }
-    
+
     //indicate timeout interval
     else if (strcmp(argv[index], "--timeout") == 0 || strcmp(argv[index], "-t") == 0){
       if (index + 1 == argc) {
@@ -64,23 +65,23 @@ int main(int argc, const char ** argv){
       timeoutInterval = atoi(argv[index + 1]);
       index++;
     }
-    
+
     //print all sent data
     else if (strcmp(argv[index], "--print-sent") == 0 || strcmp(argv[index], "-ps") == 0){
       printSent = true;
     }
-    
+
     //print all received data
     else if (strcmp(argv[index], "--print-recv") == 0 || strcmp(argv[index], "-pr") == 0){
       printReceived = true;
     }
-    
+
     //print all data
     else if (strcmp(argv[index], "--print-all") == 0 || strcmp(argv[index], "-pa") == 0){
       printReceived = true;
       printSent = true;
     }
-    
+
     //print server protocol
     else if (strcmp(argv[index], "--verbose") == 0 || strcmp(argv[index], "-v") == 0){
       verbose = true;
@@ -89,20 +90,20 @@ int main(int argc, const char ** argv){
       Error::exit(-1);
     }
   }
-  
+
 // !! Begin GBN Server Initialization  !!
-  
+
   GBNServerProtocol server = GBNServerProtocol(windowSize, timeoutInterval, port);
   server.communicator.printReceieved = printReceived;
   server.communicator.printSent = printSent;
   server.verbose = verbose;
-  
+
 // !! Begin Handshake !!
-  
+
   if (server.verbose){
     cout << "Waiting for connection on port " << server.communicator.socket.port << "." << endl;
   }
-  
+
   //waiting for client to request connection
   while (!server.receivedSyn());
   if (server.verbose){
@@ -110,14 +111,14 @@ int main(int argc, const char ** argv){
     cout << "Sent: Synack." << endl << endl;
   }
   sendSynack(&server);
-  
+
   //wait for synack ack
   pthread_t receiveSynackThread;
   if (pthread_create(&receiveSynackThread, NULL, receiveAck, &server)) {
     cout << "Error creating ack thread." << endl;
     exit(1);
   }
-  
+
   //resend synack at timeout
   while (server.timeoutTimer.valid){
     if (server.timeoutTimer.elapsedTime() >= server.timeoutInterval){
@@ -128,23 +129,23 @@ int main(int argc, const char ** argv){
       sendSynack(&server);
     }
   }
-  
+
   //join thread when ack received
   if (pthread_join(receiveSynackThread, NULL)) {
     cout << "Error joining ack thread" << endl;
     exit(1);
   }
-  
+
 // !! Begin Data Transmission !!
-  
+
   //send data
-  while (server.keepAlive && (server.currentWindowBase < server.totalChunks) ){
+  while (server.keepAlive/* && (server.currentWindowBase < server.totalPackets)*/ ){
     if (server.verbose){
-      cout << "Current window base: " << server.currentWindowBase << ", Total packets: " << server.totalChunks << endl;
+      cout << "Current window base: " << server.currentWindowBase << ", Total packets: " << server.totalPackets << endl;
     }
     server.timeoutTimer.valid = true;
     sendValidPackets(&server);
-    
+
 
     //wait for ack
     pthread_t receiveAckThread;
@@ -152,7 +153,7 @@ int main(int argc, const char ** argv){
       cout << "Error creating ack thread" << endl;
       exit(1);
     }
-    
+
     //resend data at timeout
     while (server.keepAlive && server.timeoutTimer.valid){
       if (!server.timeoutTimer.timing){
@@ -165,11 +166,11 @@ int main(int argc, const char ** argv){
         resendValidPackets(&server);
       }
     }
-    
+
     if (!server.keepAlive){
       return 0;
     }
-    
+
     //join thread when ack received
     if (pthread_join(receiveAckThread, NULL)) {
       cout << "Error joining receive thread" << endl;
@@ -195,13 +196,13 @@ void * receiveAck(void * aserver){
 //sends all packets in current window
 void resendValidPackets(GBNServerProtocol * server){
   for (int packetNum = server->currentWindowBase; packetNum < server->currentWindowBase + server->windowSize; packetNum++){
-    if (packetNum < server->totalChunks){
+    if (packetNum < server->totalPackets){
       if (server->verbose){
         cout << "Sent: Packet number " << packetNum << endl;
       }
       server->timeoutTimer.start();
       server->sendData(packetNum);
-    }
+    } 
   }
   if (server->verbose){
     cout << endl;
@@ -211,7 +212,7 @@ void resendValidPackets(GBNServerProtocol * server){
 //TODO: refactorable with resendValidPackets!
 void sendValidPackets(GBNServerProtocol * server){
   for (int packetNum = server->currentWindowBase; packetNum < server->currentWindowBase + server->windowSize; packetNum++){
-    if (packetNum < server->totalChunks && server->packetState[packetNum] == Unsent){
+    if (packetNum < server->totalPackets && server->packetState[packetNum] == Unsent){
       if (server->verbose){
         cout << "Sent: Packet number " << packetNum << endl;
       }
