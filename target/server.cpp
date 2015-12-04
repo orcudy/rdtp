@@ -27,7 +27,7 @@ int main(int argc, const char ** argv){
 // !! Begin Command Line Argument Parsing !!
 
   if (argc > 9){
-    Error::usage();
+    Error::serverUsage();
   }
 
   int port = 45000;
@@ -42,7 +42,7 @@ int main(int argc, const char ** argv){
     //indicate port number
     if (strcmp(argv[index], "--port") == 0 || strcmp(argv[index], "-p") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::serverUsage();
       }
       port = atoi(argv[index + 1]);
       index++;
@@ -51,7 +51,7 @@ int main(int argc, const char ** argv){
     //indicate window size
     else if (strcmp(argv[index], "--window") == 0 || strcmp(argv[index], "-w") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::serverUsage();
       }
       windowSize = atoi(argv[index + 1]);
       index++;
@@ -60,7 +60,7 @@ int main(int argc, const char ** argv){
     //indicate timeout interval
     else if (strcmp(argv[index], "--timeout") == 0 || strcmp(argv[index], "-t") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::serverUsage();
       }
       timeoutInterval = atoi(argv[index + 1]);
       index++;
@@ -86,7 +86,7 @@ int main(int argc, const char ** argv){
     else if (strcmp(argv[index], "--verbose") == 0 || strcmp(argv[index], "-v") == 0){
       verbose = true;
     }else {
-      Error::usage();
+      Error::serverUsage();
       Error::exit(-1);
     }
   }

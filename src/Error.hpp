@@ -12,7 +12,8 @@
 class Error{
 public:
   //class methods
-  static void usage();
+  static void clientUsage();
+  static void serverUsage();
   static void exit(int status);
 };
 

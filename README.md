@@ -1,3 +1,33 @@
+#RDTP
+
+RDTP is an implementation of the Go-Back-N reliable data transfer protocol over UDP. The repository includes both sender (server) and receiver (client) programs. 
+
+##Building
+
+Build the client and server programs by navigating to the project directory and running the `make` utility. 
+
+This builds both a `client` and `server` executable. From the root directory of the project, the executables can be found in `bin/client` and `bin/server`.
+
+##Running
+
+###Server 
+
+The `server` program can be run with the following options:
+
+`[--port, -p] portno` -- sets the server port number to *portno*
+
+`[--timeout, -t] timeoutInterval -- sets the server timeout interval for data retransmission
+
+`[-window, -w] windowSize` -- sets the server window size for the Go-Back-N reliable  data transfer protocol
+
+`[--verbose, -v]` -- prints protocol information to the console
+
+`[--print-sent, -ps] -- prints all sent data to stdout
+
+`[--print-recv, -pr] -- prints all received data to stdout
+
+`[--print-all, -pa]` -- prints both sent and received data to stdout
+
 # Class Reference
 
 ## Socket

@@ -11,9 +11,13 @@
 
 using namespace std;
 
-void Error::usage(){
-  cout << "Usage: client --filename <name> [-i <ip>] [-p <port>] [-lProb <probability>] [-cProb <probability>] [--timeout <seconds>]  " << endl;
-  cout << "       server [-p <port>]" << endl;
+void Error::clientUsage(){
+  cout << "Usage: client -f filename [-i ip] [-p port] [-l packetLossProbability] [-c packetCorruptionProbability] [-t timeout] [-pa] [-pr] [-ps] [-v]" << endl;
+  Error::exit(1);
+}
+
+void Error::serverUsage(){
+  cout << "Usage: server [-p port] [-t timeout] [-w windowSize] [-pa] [-pr] [-ps] [-v]" << endl;
   Error::exit(1);
 }
 

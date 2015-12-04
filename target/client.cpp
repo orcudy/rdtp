@@ -27,7 +27,7 @@ int main(int argc, const char ** argv){
 // !! Begin Command Line Argument Parsing !!
 
   if (argc > 17){
-    Error::usage();
+    Error::clientUsage();
   }
 
   std::string ip = "127.0.0.1";
@@ -46,7 +46,7 @@ int main(int argc, const char ** argv){
     //indicate ip address
     if (strcmp(argv[index], "--ip-address") == 0 || strcmp(argv[index], "-i") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       ip = std::string (argv[index + 1]);
     }
@@ -54,7 +54,7 @@ int main(int argc, const char ** argv){
     //indicate port number
     if (strcmp(argv[index], "--port") == 0 || strcmp(argv[index], "-p") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       port = atoi(argv[index + 1]);
     }
@@ -62,7 +62,7 @@ int main(int argc, const char ** argv){
     //indicate filename
     if (strcmp(argv[index], "--filename") == 0 || strcmp(argv[index], "-f") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       filename = std::string(argv[index + 1]);
     }
@@ -70,7 +70,7 @@ int main(int argc, const char ** argv){
     //indicate probability of packet loss
     if (strcmp(argv[index], "--lost") == 0 || strcmp(argv[index], "-l") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       lostProb = atof(argv[index + 1]);
     }
@@ -78,7 +78,7 @@ int main(int argc, const char ** argv){
     //indicate probability of packet being corrupted
     if (strcmp(argv[index], "--corrupt") == 0 || strcmp(argv[index], "-c") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       corrProb = atof(argv[index + 1]);
     }
@@ -86,7 +86,7 @@ int main(int argc, const char ** argv){
     //indicate timeout interval
     if (strcmp(argv[index], "--timeout") == 0 || strcmp(argv[index], "-t") == 0){
       if (index + 1 == argc) {
-        Error::usage();
+        Error::clientUsage();
       }
       timeoutInterval = atof(argv[index + 1]);
     }
@@ -114,7 +114,7 @@ int main(int argc, const char ** argv){
   }
 
   if(filename == ""){
-    Error::usage();
+    Error::clientUsage();
     Error::exit(-1);
   }
 
