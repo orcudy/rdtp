@@ -35,7 +35,7 @@ int main(int argc, const char ** argv){
   bool printSent = false;
   bool printReceived = false;
   int windowSize = 10;
-  int timeoutInterval = 2;
+  int timeoutInterval = 1;
 
   for (int index = 1; index < argc; index++){
 
@@ -209,7 +209,7 @@ void resendValidPackets(GBNServerProtocol * server){
   }
 }
 
-//TODO: refactorable with resendValidPackets!
+//send all unsent packets in current window
 void sendValidPackets(GBNServerProtocol * server){
   for (int packetNum = server->currentWindowBase; packetNum < server->currentWindowBase + server->windowSize; packetNum++){
     if (packetNum < server->totalPackets && server->packetState[packetNum] == Unsent){

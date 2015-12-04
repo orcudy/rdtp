@@ -2,6 +2,10 @@
 
 RDTP is an implementation of the Go-Back-N reliable data transfer protocol over UDP. The repository includes both sender (server) and receiver (client) programs. 
 
+The project was created for CS118 (Introduction to Computer Networks) at UCLA during the Fall of 2015. The project was created over the course of 4 weeks by Chris Orcutt and Chloe Drazen.
+
+For all inquiries, please contact Chris Orcutt at orcutt.chris@gmail.com.
+
 ##Building
 
 Build the client and server programs by navigating to the project directory and running the `make` utility. 
@@ -16,17 +20,45 @@ The `server` program can be run with the following options:
 
 `[--port, -p] portno` -- sets the server port number to *portno*
 
-`[--timeout, -t] timeoutInterval -- sets the server timeout interval for data retransmission
+`[--timeout, -t] timeoutInterval` -- sets the server timeout interval for data retransmission
 
 `[-window, -w] windowSize` -- sets the server window size for the Go-Back-N reliable  data transfer protocol
 
 `[--verbose, -v]` -- prints protocol information to the console
 
-`[--print-sent, -ps] -- prints all sent data to stdout
+`[--print-sent, -ps]` -- prints all sent data to stdout
 
-`[--print-recv, -pr] -- prints all received data to stdout
+`[--print-recv, -pr]` -- prints all received data to stdout
 
 `[--print-all, -pa]` -- prints both sent and received data to stdout
+
+Without any options, running `server` defaults to port 45000 with a window size of 10 and timeout interval of 1 second.
+
+###Client 
+
+The `client` program can be run with the following options:
+
+`[--filename, -f] filename` -- the filename that the client is requesting from the server
+
+`[--ip-address, -ip] ipaddr` -- sets the IP address of the server with which the client wants to communicate. (Note: Both dot decimal and URL formats are supported.)
+
+`[--port, -p] portno` -- sets the port number of the server with which the client wants to communicate
+
+`[--timeout, -t] timeoutInterval` -- sets the client timeout interval for data syn transmission
+
+`[-lost, -l] probabilityOfLoss` -- testing option used to simulate packet loss with given probability 
+
+`[-corrupt, -c] probabilityOfCorruption` -- testing option used to simulate packet corruption with given probability 
+
+`[--verbose, -v]` -- prints protocol information to the console
+
+`[--print-sent, -ps]` -- prints all sent data to stdout
+
+`[--print-recv, -pr]` -- prints all received data to stdout
+
+`[--print-all, -pa]` -- prints both sent and received data to stdout
+
+The `client` program must be given a filename to run successfully. Without any options, the `client` program defaults to connecting to the `localhost` on port 45000 with a timeout interval of 1 second.
 
 # Class Reference
 
