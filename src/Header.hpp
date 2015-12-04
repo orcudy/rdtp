@@ -24,7 +24,7 @@ public:
 
   const static int maxFilenameSize = 200;
   char filename[maxFilenameSize];
-  int fileSize;
+  int totalPackets;
   
   //constructors
   Header();

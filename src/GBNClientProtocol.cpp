@@ -10,7 +10,7 @@
 #include "Header.hpp"
 
 #include "UDPCommunicator.hpp"
-#include <string>
+#include <string.h>
 #include <iostream>
 #include <fstream>
 
@@ -28,6 +28,7 @@ GBNClientProtocol::GBNClientProtocol(double TOInterval, string ip, int port, str
   filename = fname;
   timeoutInterval = TOInterval;
   expectedSeq = 0;
+  totalPackets = -1;
 }
 
 void GBNClientProtocol::sendSyn(std::string filename)
@@ -72,7 +73,7 @@ bool GBNClientProtocol::receiveSynAck()
   if(!header->synack)
     return false;
   
-  fileLength = header->fileSize;
+  totalPackets = header->totalPackets;
   
   return true;
   
@@ -117,7 +118,8 @@ void GBNClientProtocol::writeTofile(std::string data)
   ofstream outputFile;
   
   //outputFile.open(filename, ios::app);
-  outputFile.open("/Users/orcudy/Desktop/chloeisapoop.txt", ios::app | ios::out);
+  //outputFile.open("/Users/orcudy/Desktop/received.txt", ios::app | ios::out);
+  outputFile.open("/home/cs118/Desktop/received.txt", ios::app | ios::out);
   outputFile << data;
   outputFile.close();
 }

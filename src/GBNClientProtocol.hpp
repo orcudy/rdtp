@@ -37,6 +37,8 @@ public:
   bool receiveSynAck();
   void sendAck(int seqNum, int ackNum);
   
+    int totalPackets;
+  
   //Check it's what we're expecting and if so write to file
   //Update bytesReceived
   void receiveData();

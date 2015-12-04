@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		2E1C40AF1C06ACAB0022C6F4 /* TCPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D41BF8206400F47095 /* TCPCommunicator.cpp */; };
 		2E1C40B01C06ACAB0022C6F4 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5CA1BF8206400F47095 /* Error.cpp */; };
 		2E1C40B21C06ACAB0022C6F4 /* GBNClientProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */; };
@@ -38,7 +37,6 @@
 		2E1C40DE1C06ADC70022C6F4 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F5D21BF8206400F47095 /* Socket.cpp */; };
 		2E1C40DF1C06ADC70022C6F4 /* UDPCommunicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5F6051BF8218500F47095 /* UDPCommunicator.cpp */; };
 		2E1C40E61C06ADDD0022C6F4 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CB63E1C02DED8002EB2BF /* timer.cpp */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,11 +70,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-
 		2E1C40C01C06ACAB0022C6F4 /* client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = client; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1C40D21C06ADA50022C6F4 /* server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = server; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1C40E51C06ADC70022C6F4 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
-
 		2E3BEE7F1BFC27B600301F74 /* GBNClientProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBNClientProtocol.cpp; sourceTree = "<group>"; };
 		2E3BEE801BFC27B600301F74 /* GBNClientProtocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GBNClientProtocol.hpp; sourceTree = "<group>"; };
 		2E3BEE851BFC27D800301F74 /* GBNServerProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBNServerProtocol.cpp; sourceTree = "<group>"; };
@@ -84,7 +80,6 @@
 		2E4CB63B1C02DD06002EB2BF /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		2E4CB63C1C02DD06002EB2BF /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		2E4CB63E1C02DED8002EB2BF /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
-
 		2EA5F5C91BF8206400F47095 /* Communicator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Communicator.hpp; sourceTree = "<group>"; };
 		2EA5F5CA1BF8206400F47095 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
 		2EA5F5CB1BF8206400F47095 /* Error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Error.hpp; sourceTree = "<group>"; };
@@ -297,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				2E1C40AF1C06ACAB0022C6F4 /* TCPCommunicator.cpp in Sources */,
 				2E1C40B01C06ACAB0022C6F4 /* Error.cpp in Sources */,
 				2E1C40B21C06ACAB0022C6F4 /* GBNClientProtocol.cpp in Sources */,
@@ -342,7 +336,6 @@
 				2E1C40DD1C06ADC70022C6F4 /* FileSplitter.cpp in Sources */,
 				2E1C40DE1C06ADC70022C6F4 /* Socket.cpp in Sources */,
 				2E1C40DF1C06ADC70022C6F4 /* UDPCommunicator.cpp in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
