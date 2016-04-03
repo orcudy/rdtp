@@ -1,10 +1,8 @@
 #RDTP
 
-RDTP is an implementation of the Go-Back-N reliable data transfer protocol over UDP. The repository includes both sender (server) and receiver (client) programs. 
+RDTP is an implementation of the Go-Back-N reliable data transfer protocol over UDP. The repository includes both sender (target/server.cpp) and receiver (target/client.cpp) programs. 
 
-The project was created in 4 weeks by Chris Orcutt and Chloe Drazen for CS118 (Introduction to Computer Networks) at UCLA during the Fall of 2015.
-
-Note that the project contains both a .xcodeproj file and Makefile. This architecture is intended and allows for easy editing/compilation when using the Xcode environment or the command line. 
+The project contains both a .xcodeproj file and Makefile. This architecture is intended and allows for easy editing/compilation when using the Xcode environment or the command line. 
 
 For all inquiries, please contact Chris Orcutt at orcutt.chris@gmail.com.
 
